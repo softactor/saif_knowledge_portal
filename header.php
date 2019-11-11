@@ -16,6 +16,8 @@ include 'helper/utilities.php';
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
+  <!-- DataTables -->
+  <link rel="stylesheet" href="vendor/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vendor/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vendor/bower_components/font-awesome/css/font-awesome.min.css">
@@ -26,8 +28,6 @@ include 'helper/utilities.php';
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="vendor/dist/css/skins/_all-skins.min.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="vendor/bower_components/morris.js/morris.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="vendor/bower_components/jvectormap/jquery-jvectormap.css">
   <!-- Date Picker -->
@@ -46,6 +46,7 @@ include 'helper/utilities.php';
 
   <!-- Google Font -->
   <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

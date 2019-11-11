@@ -11,3 +11,7 @@ and open the template in the editor.
 .login-logo-overwrite{
     font-size: 21px !important;
 }
+a.create_link{
+    text-align: right;
+    float: right;
+}
