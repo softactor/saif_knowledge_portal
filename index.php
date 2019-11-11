@@ -7,7 +7,7 @@ include 'function/login_process.php';
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Admin TQ | Log in</title>
+        <title>Knowledge Portal | Log in</title>
         <link rel="shortcut icon" type="image/x-icon" href="images/icon/port.png" />
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -36,7 +36,7 @@ include 'function/login_process.php';
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo login-logo-overwrite">
-                <a href="index.php"><b>Admin TQ</b></a>
+                <b>Knowledge Portal</b>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -74,11 +74,7 @@ include 'function/login_process.php';
                         ?>
                     </div>
                     <div class="row">
-                        <!-- /.col -->
-                        <div class="col-xs-6">
-                            <a href="#">I forgot my password</a>
-                        </div>
-                        <div class="col-xs-6">
+                        <div class="col-xs-12">
                             <input type="submit" name="login_submit" class="btn btn-primary btn-block btn-flat" value="Login">
                         </div>
                         <!-- /.col -->
