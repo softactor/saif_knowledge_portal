@@ -6,6 +6,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+        <?php include 'operation_message.php'; ?>
         <h1>
             Showroom
             <small>Add</small>
@@ -22,30 +23,30 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="#" class="create_link"><i class="fa fa-list"></i> List</a>
+                        <a href="showroom_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
-                    <form role="form">
+                    <form role="form" method="post" action="">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Showroom Name</label>
-                                <input type="text" class="form-control" id="showroom_name" name="showroom_name" placeholder="Enter showroom name">
+                                <input type="text" class="form-control" id="showroom_title" name="showroom_title" placeholder="Enter showroom name">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address">
+                                <input type="text" class="form-control" id="showroom_address" name="showroom_address" placeholder="Enter address">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Contact Person</label>
-                                <input type="text" class="form-control" id="contact_person" placeholder="Enter contact person">
+                                <input type="text" class="form-control" id="contact_name" name="contact_name" placeholder="Enter contact person">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Contact Number</label>
-                                <input type="text" class="form-control" id="contact_number" placeholder="Enter contact number">
+                                <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number">
                             </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <input type="submit" name="showroomSave" value="Save" class="btn btn-primary" />
                         </div>
                     </form>
                     <!-- /.box-body -->

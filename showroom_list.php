@@ -25,26 +25,44 @@
                         <a href="showroom_add.php" class="create_link"><i class="fa fa-plus"></i> Add</a>
                     </div>
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Contact</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#</td>
-                                    <td>Name</td>
-                                    <td>Address</td>
-                                    <td>Contact</td>
-                                    <td>Action</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <?php
+                        $table = 'showrooms';
+                        $order = 'ASC';
+                        $column = 'showroom_title';
+                        $dataType = 'obj';
+                        $showroomData = getTableDataByTableName($table, $order, $column, $dataType);
+                        if (isset($showroomData) && !empty($showroomData)) {
+                            ?>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Contact</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sl = 0;
+                                    foreach ($showroomData as $adata) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo ++$sl; ?></td>
+                                            <td><?php echo (isset($adata->showroom_title) && !empty($adata->showroom_title) ? $adata->showroom_title : 'No data'); ?></td>
+                                            <td><?php echo (isset($adata->showroom_address) && !empty($adata->showroom_address) ? $adata->showroom_address : 'No data'); ?></td>
+                                            <td><?php echo (isset($adata->contact_number) && !empty($adata->contact_number) ? $adata->contact_number : 'No data'); ?></td>
+                                            <td>Action</td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        <?php } else { ?>
+                            <div class="alert alert-warning">
+                                <strong>Sorry there is no data!</strong>
+                            </div>
+                        <?php } ?>
                     </div>
                     <!-- /.box-body -->
                 </div>

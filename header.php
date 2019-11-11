@@ -5,6 +5,7 @@ if(!isset($_SESSION['logged']['status'])){
 }
 include 'connection/connect.php';
 include 'helper/utilities.php';
+include 'function/showroom_process.php';
 ?>
 <!DOCTYPE html>
 <html>

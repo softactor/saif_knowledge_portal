@@ -15,3 +15,6 @@ a.create_link{
     text-align: right;
     float: right;
 }
+.json_alert_message{
+    display: none;
+}
