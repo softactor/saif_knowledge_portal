@@ -12,6 +12,22 @@
         <script src="frontend/js/jquery.min.js"></script>
         <!-- Bootstrap Core Css  -->
         <script src="frontend/js/bootstrap.min.js"></script>
+		
+		
+		<!-- Jquery Smooth Scroll  -->
+		<!------------------------------------Datatables----->
+        <script src="frontend/js/jquery-3.3.1.js"></script>
+        <script src="frontend/js/jquery.dataTables.min.js"></script>
+        <script src="frontend/js/dataTables.bootstrap.min.js"></script>
+		
+		<script>
+				$(document).ready(function() {
+				$('#example').DataTable( {
+					"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+				} );
+			} );
+		</script>
+		<!-------------------------------------Datatables----->
         <!-- Jquery Smooth Scroll  -->
         <script src="frontend/js/jquery.smoothscroll.js"></script>
         <!-- Jquery Easing -->

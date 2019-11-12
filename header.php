@@ -53,7 +53,7 @@ include './admin/helper/utilities.php';
                         <span class="icon-bar"></span>
                     </button>
                     <!-- logo -->
-                    <a href="frontend/index.html" class="navbar-brand"><img class="img-responsive" alt="" src="frontend/images/logo.png">
+                    <a href="index.php" class="navbar-brand"><img class="img-responsive" alt="" src="frontend/images/logo.png">
                     </a>
                     <!-- header end -->
                 </div>
