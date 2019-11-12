@@ -48,8 +48,8 @@
                                     foreach ($tableData as $adata) {
                                         ?>
                                         <tr>
-                                            <td>#</td>
-                                            <td>Name</td>
+                                            <td><?php echo ++$sl; ?></td>
+                                            <td><?php echo (isset($adata->product_title) && !empty($adata->product_title) ? $adata->product_title : 'No data'); ?></td>
                                             <td>Action</td>
                                         </tr>  
                                     <?php } ?>

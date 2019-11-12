@@ -27,12 +27,12 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?php echo getDataRowByTable('faq'); ?></h3>
 
                             <p>Question Answer</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="ion ion-person"></i>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><?php echo getDataRowByTable('product_info'); ?></h3>
 
                             <p>Product</p>
                         </div>
@@ -58,7 +58,7 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3><?php echo getDataRowByTable('showrooms'); ?></h3>
 
                             <p>Showroom</p>
                         </div>

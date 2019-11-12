@@ -100,3 +100,13 @@ function isDuplicateData($table, $where, $notWhere=''){
     }
     return false;
 }
+function getDataRowByTable($table){
+    global $conn;
+    $sql = "SELECT * FROM $table";
+    $result = $conn->query($sql);
+    $name   =   '';
+    if ($result->num_rows > 0) {
+        return $result->num_rows;
+    }
+    return "0";
+}
