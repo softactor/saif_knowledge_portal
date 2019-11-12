@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="col-md-10 col-sm-10  col-xs-12">
                                                 <p>Question answer details will come here</p>
-                                                <div class="pull-right tagcloud">
+                                                <div class="pull-left tagcloud">
                                                     <a href="frontend/">tag 1</a>
                                                     <a href="frontend/">tag 2</a>
                                                     <a href="frontend/">tag 3</a>
