@@ -28,7 +28,7 @@
 		</script>
 		<!-------------------------------------Datatables----->
         <!-- Jquery Smooth Scroll  -->
-        <script src="frontend/js/jquery.smoothscroll.js"></script>
+        <!--<script src="frontend/js/jquery.smoothscroll.js"></script>-->
         <!-- Jquery Easing -->
         <script type="text/javascript" src="frontend/js/easing.js"></script>
         <!-- Jquery Counter -->

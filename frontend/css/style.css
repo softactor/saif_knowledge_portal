@@ -54,7 +54,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-overflow-scrolling: touch;
 	-webkit-font-smoothing: antialiased;
-	background: #eee url("../images/darkgrain.png") repeat scroll 0 0;
+	/*background: #eee url("../frontend/images/darkgrain.png") repeat scroll 0 0;*/
 }
 a {
 	color: #be161e;
@@ -740,7 +740,7 @@ hr.main {
 }
 /* =-=-=-=-=-=-= Search Form =-=-=-=-=-=-= */
 .full-section.search-section {
-	background: #353b65 url("../images/slider3.jpg") no-repeat scroll center top ;
+	/*background: #353b65 url("../frontend/images/slider3.jpg") no-repeat scroll center top ;*/
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -750,7 +750,7 @@ hr.main {
 	padding: 70px 0;
 }
 .full-section.search-section-listing {
-	background: #353b65 url("../images/slider3.jpg") no-repeat scroll center top;
+	/*background: #353b65 url("../frontend/images/slider3.jpg") no-repeat scroll center top;*/
 	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -827,7 +827,7 @@ form.search-form input.search-btn:hover {
 /* =-=-=-=-=-=-= Parallax Settings  =-=-=-=-=-=-= */
 
 .full-section.parallax-home {
-	background: transparent url("../images/slider3.jpg") center center no-repeat;
+	/*background: transparent url("../frontend/images/slider3.jpg") center center no-repeat;*/
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -2968,7 +2968,7 @@ label {
 /* =-=-=-=-=-=-= Footer =-=-=-=-=-=-= */
 
 .footer-area {
-	background: #181718 url("../images/footer.png") repeat-x scroll center bottom;
+	/*background: #181718 url("../images/footer.png") repeat-x scroll center bottom;*/
 	color: #c9c9c9;
 	font-family: 'Open Sans', sans-serif;
 	position: relative;
