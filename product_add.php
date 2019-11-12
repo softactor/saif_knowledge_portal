@@ -23,17 +23,43 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="#" class="create_link"><i class="fa fa-list"></i> List</a>
+                        <a href="product_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
-                    <form role="form">
+                    <form role="form" method="post" action="">
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputQuestion">Division</label>
-                                <input type="text" class="form-control" id="showroom_name" name="showroom_name" placeholder="Enter product division">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Division</label>
+                                        <select class="form-control" id="division_id" name="division_id">
+                                            <option value="">Select</option>
+                                            <?php
+                                            $table = "division";
+                                            $groupData = getTableDataByTableName($table, 'asc', 'name', 'obj');
+                                            if (isset($groupData) && !empty($groupData)) {
+                                                foreach ($groupData as $gdata) {
+                                                    ?>
+                                                    <option value="<?php echo $gdata->id; ?>"><?php echo $gdata->name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product Type</label>
+                                        <div class="radio">
+                                            <label class="radio-inline"><input type="radio" name="product_type" value="1" checked>Existing</label>
+                                            <label class="radio-inline"><input type="radio" name="product_type" value="2">Upcoming</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Product Title</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter product title">
+                                <input type="text" class="form-control" id="product_title" name="product_title" placeholder="Enter product title">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Description</label>
@@ -42,11 +68,11 @@
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Tag</label>
                                 <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Tag with comma separated value">
-                            </div>
+                            </div>                            
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <input type="submit" name="ProductSave" value="Save" class="btn btn-primary" />
                         </div>
                     </form>
                     <!-- /.box-body -->

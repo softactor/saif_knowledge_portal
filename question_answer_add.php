@@ -23,13 +23,13 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="#" class="create_link"><i class="fa fa-list"></i> List</a>
+                        <a href="question_answer_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
-                    <form role="form">
+                    <form role="form" method="post" action="">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Question</label>
-                                <input type="text" class="form-control" id="question" name="question" placeholder="Enter question">
+                                <input type="text" class="form-control" id="question_title" name="question_title" placeholder="Enter question">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Answer</label>
@@ -37,12 +37,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Tag</label>
-                                <input type="text" class="form-control" id="question_tag" placeholder="Enter Tag with comma separated value">
+                                <input type="text" class="form-control" id="question_tag" name="question_tag" placeholder="Enter Tag with comma separated value">
                             </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <input type="submit" name="faqSave" value="Save" class="btn btn-primary" />
                         </div>                        
                     </form>
                     <!-- /.box-body -->

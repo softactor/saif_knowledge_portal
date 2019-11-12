@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Question</th>
-                                        <th>Answer</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
