@@ -31,8 +31,8 @@
                         $order = 'ASC';
                         $column = 'showroom_title';
                         $dataType = 'obj';
-                        $showroomData = getTableDataByTableName($table, $order, $column, $dataType);
-                        if (isset($showroomData) && !empty($showroomData)) {
+                        $tableData = getTableDataByTableName($table, $order, $column, $dataType);
+                        if (isset($tableData) && !empty($tableData)) {
                             ?>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -47,7 +47,7 @@
                                 <tbody>
                                     <?php
                                     $sl = 0;
-                                    foreach ($showroomData as $adata) {
+                                    foreach ($tableData as $adata) {
                                         ?>
                                         <tr>
                                             <td><?php echo ++$sl; ?></td>

@@ -39,7 +39,7 @@ if (isset($_POST['login_submit']) && !empty($_POST['login_submit'])) {
                 $lname      =   $row->last_name;
                 $user_id    =   $row->id;
                 unset($_SESSION['error']);
-                $_SESSION['success']                =   $fname.' '.$lname." have successfully loggedin!";
+                $_SESSION['success']                =   $fname.' '.$lname." have been successfully loggedin.";
                 $_SESSION['logged']['user_name']    =   $fname.' '.$lname;
                 $_SESSION['logged']['user_id']      =   $user_id;
                 $_SESSION['logged']['status']         =   true;

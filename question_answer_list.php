@@ -26,22 +26,40 @@
                         <a href="question_answer_add.php" class="create_link"><i class="fa fa-plus"></i> Add</a>
                     </div>
                     <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Question</th>
-                                    <th>Answer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#</td>
-                                    <td>Question</td>
-                                    <td>Action</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <?php
+                        $table = 'faq';
+                        $order = 'ASC';
+                        $column = 'question_title';
+                        $dataType = 'obj';
+                        $tableData = getTableDataByTableName($table, $order, $column, $dataType);
+                        if (isset($tableData) && !empty($tableData)) {
+                            ?>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sl = 0;
+                                    foreach ($tableData as $adata) {
+                                        ?>
+                                        <tr>
+                                            <td>#</td>
+                                            <td>Question</td>
+                                            <td>Action</td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        <?php } else { ?>
+                            <div class="alert alert-warning">
+                                <strong>Sorry there is no data!</strong>
+                            </div>
+                        <?php } ?>
                     </div>
                     <!-- /.box-body -->
                 </div>
