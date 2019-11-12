@@ -756,7 +756,7 @@ hr.main {
   -o-background-size: cover;
 	background-size:cover;
 	height: auto ;
-	padding: 60px 0;
+	padding: 8px 0;
 }
 .search-section .search-area {
 	padding: 50px 0;
@@ -780,7 +780,7 @@ p.search-tag-line {
 form.search-form {
 	position: relative;
 	z-index: 44;
-	margin: 40px 0 0;
+	margin: 0 0 0;
 	text-align: center;
 }
 form.search-form .input-common, form.search-form input.search-term, form.search-form input.search-btn {
