@@ -147,7 +147,6 @@
                                             <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs">
                                                 <a data-toggle="tooltip" data-placement="bottom" data-original-title="Martina Jaz" href="frontend/#"><img alt="" class="correct img-responsive center-block" src="frontend/images/faq.png">
                                                 </a>
-                                                <span class="tick"><i class="fa fa-check" aria-hidden="true"></i></span>
                                             </div>
                                             <div class="col-md-7 col-sm-8  col-xs-12">
                                                 <h3><a  href="frontend/#"> 	
