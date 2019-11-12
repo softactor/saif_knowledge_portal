@@ -136,7 +136,7 @@
                 <div class="container">
                     <!-- Row -->
                     <div class="row">
-                        <div class="col-md-8 col-sm-12">
+                        <div class="col-md-12 col-sm-12">
                             <div class="listing">
                                 <!-- Question Area Panel -->
                                 <div class="listing-area">
@@ -145,38 +145,25 @@
                                     <div class="listing-grid ">
                                         <div class="row">
                                             <div class="col-md-2 col-sm-2 col-xs-12 hidden-xs">
-                                                <a data-toggle="tooltip" data-placement="bottom" data-original-title="Martina Jaz" href="frontend/#"><img alt="" class="correct img-responsive center-block" src="frontend/images/authors/1.jpg">
+                                                <a data-toggle="tooltip" data-placement="bottom" data-original-title="Martina Jaz" href="frontend/#"><img alt="" class="correct img-responsive center-block" src="frontend/images/faq.png">
                                                 </a>
                                                 <span class="tick"><i class="fa fa-check" aria-hidden="true"></i></span>
                                             </div>
                                             <div class="col-md-7 col-sm-8  col-xs-12">
                                                 <h3><a  href="frontend/#"> 	
-                                                        Php recursive function not working right</a></h3>
+                                                        Question title will come here</a></h3>
                                                 <div class="listing-meta">
                                                     <span><i class="fa fa-clock-o" aria-hidden="true"></i>8 mintes ago</span>
-                                                    <span><i class="fa fa fa-eye" aria-hidden="true"></i> 750 Views</span>
 
                                                 </div>
 
                                             </div>
-                                            <div class="col-md-3 col-sm-2 col-xs-12">
-                                                <ul class="question-statistic">
-
-                                                    <li class="active">
-                                                        <a data-toggle="tooltip" data-placement="bottom" data-original-title="Answers"><span>2</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a data-toggle="tooltip" data-placement="bottom" data-original-title="Votes"><span>0</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
                                             <div class="col-md-10 col-sm-10  col-xs-12">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.</p>
+                                                <p>Question answer details will come here</p>
                                                 <div class="pull-right tagcloud">
-                                                    <a href="frontend/">Php</a>
-                                                    <a href="frontend/">recursive</a>
-                                                    <a href="frontend/">error</a>
+                                                    <a href="frontend/">tag 1</a>
+                                                    <a href="frontend/">tag 2</a>
+                                                    <a href="frontend/">tag 3</a>
                                                 </div>
                                             </div>
 
@@ -207,27 +194,7 @@
 
                                 <!-- Question Area Panel End -->
                             </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12">
-                            <!-- sidebar -->
-                            <div class="side-bar">
-                                <!-- widget -->
-                                <div class="widget">
-                                    <div class="recent-comments">
-                                        <h2>Hot Questions</h2>
-                                        <hr class="widget-separator no-margin">
-                                        <ul>
-                                            <li><a href="frontend/#">Twitter Bootsrap 3.0 - tabs-left not working anymore?</a>
-                                            </li>
-                                            <li><a href="frontend/#">Changing the color on my tabbed left bootstrap3 tabs</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- widget -->
-                            </div>
-                            <!-- sidebar end -->
-                        </div>
+                        </div>                        
                     </div>
                     <!-- Row End -->
                 </div>
