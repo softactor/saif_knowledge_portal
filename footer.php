@@ -16,7 +16,6 @@
 		
 		<!-- Jquery Smooth Scroll  -->
 		<!------------------------------------Datatables----->
-        <script src="frontend/js/jquery-3.3.1.js"></script>
         <script src="frontend/js/jquery.dataTables.min.js"></script>
         <script src="frontend/js/dataTables.bootstrap.min.js"></script>
 		
@@ -44,11 +43,6 @@
         <script src="frontend/js/jquery.stellar.min.js"></script>
         <!--Style Switcher -->
         <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
-        <!-- Include jQuery Syntax Highlighter -->
-        <script type="text/javascript" src="frontend/scripts/shCore.js"></script>
-        <script type="text/javascript" src="frontend/scripts/shBrushPhp.js"></script>
-        <!-- Template Core JS -->
-        <script src="frontend/js/custom.js"></script>
     </body>
 
 </html>
