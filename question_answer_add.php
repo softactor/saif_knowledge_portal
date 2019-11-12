@@ -6,6 +6,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+        <?php include 'operation_message.php'; ?>
         <h1>
             Question Answer
             <small>Add</small>
