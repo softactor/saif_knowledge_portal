@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2019 at 12:22 PM
+-- Generation Time: Nov 12, 2019 at 07:31 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -25,6 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `division`
+--
+
+CREATE TABLE `division` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `division`
+--
+
+INSERT INTO `division` (`id`, `name`) VALUES
+(1, 'Battery Division'),
+(2, 'SEML'),
+(3, 'Renewable Energy'),
+(4, 'Maxson Power Ltd.'),
+(5, 'E-Engineering Ltd.'),
+(6, 'Saif Plastic & Polymer Industries Ltd.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `faq`
 --
 
@@ -34,6 +57,14 @@ CREATE TABLE `faq` (
   `question_answer` text NOT NULL,
   `question_tag` varchar(700) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `faq`
+--
+
+INSERT INTO `faq` (`id`, `question_title`, `question_answer`, `question_tag`) VALUES
+(1, 'What is your name', '<p>My name is Donald trump</p>\r\n', 'name, what is your name'),
+(2, 'test 2', '<p>description</p>\r\n', 'avn, abag');
 
 -- --------------------------------------------------------
 
@@ -51,6 +82,13 @@ CREATE TABLE `product_info` (
   `product_type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1 meaning exting product; 2 meaning upcoming'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `product_info`
+--
+
+INSERT INTO `product_info` (`id`, `division_id`, `product_title`, `description`, `image_path`, `tag`, `product_type`) VALUES
+(1, 1, 'Test Product', '<p>description</p>\r\n', NULL, 'abc', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +102,14 @@ CREATE TABLE `showrooms` (
   `contact_name` varchar(700) DEFAULT NULL,
   `contact_number` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `showrooms`
+--
+
+INSERT INTO `showrooms` (`id`, `showroom_title`, `showroom_address`, `contact_name`, `contact_number`) VALUES
+(1, 'Show room', 'Dhaka', 'Palash', '01716600843'),
+(2, 'Show room Second', 'Dhaka', 'Palash', '01716600843');
 
 -- --------------------------------------------------------
 
@@ -92,6 +138,12 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `stat
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `division`
+--
+ALTER TABLE `division`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faq`
@@ -123,20 +175,25 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `division`
+--
+ALTER TABLE `division`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `product_info`
 --
 ALTER TABLE `product_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `showrooms`
 --
 ALTER TABLE `showrooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
