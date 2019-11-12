@@ -1,4 +1,4 @@
-/connection
-/connection/connect.php
-connection/connect.php
-js/site_url.js
+admin/connection
+admin/connection/connect.php
+admin/connection/connect.php
+admin/js/site_url.js
