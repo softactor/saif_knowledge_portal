@@ -3,6 +3,7 @@
 		<!-------------------------------------Datatables----->
         <link rel="stylesheet" href="frontend/css/bootstrap.min.css">
         <link rel="stylesheet" href="frontend/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="frontend/css/dataTable.custom.css">
 		<!-------------------------------------Datatables----->
         <div class="main-content-area">
             <!-- =-=-=-=-=-=-= Latest Questions  =-=-=-=-=-=-= -->

@@ -1,0 +1,22 @@
+table.dataTable {
+			border:1px solid #000000;
+		}
+		table.table-bordered.dataTable th, table.table-bordered.dataTable td {
+			border:1px solid #000000;
+		}
+		div.dataTables_wrapper div.dataTables_filter{
+			text-align: left;
+			width: 477px;
+		}
+		div.dataTables_wrapper div.dataTables_filter label{
+			font-weight: bold;
+			white-space: nowrap;
+			text-align: left;
+			font-size: 20px;
+		}
+		div.dataTables_wrapper div.dataTables_filter input {
+			margin-left: 0.5em;
+			display: inline-block;
+			width: 475px;
+			border:1px solid #000000;
+		}
