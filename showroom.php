@@ -16,9 +16,9 @@
                         <h1 class="service_title">Showroom Information</h1>
                     </div>
                     <?php
-                    $table = 'faq';
+                    $table = 'showrooms';
                     $order = 'ASC';
-                    $column = 'question_title';
+                    $column = 'showroom_title';
                     $dataType = 'obj';
                     $tableData = getTableDataByTableName($table, $order, $column, $dataType);
                     if (isset($tableData) && !empty($tableData)) {
@@ -27,8 +27,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Division</th>
-                                    <th>Product</th>
+                                    <th>Showroom</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
@@ -39,8 +38,7 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $sl; ?></td>
-                                        <td><?php echo $faq->division_id; ?></td>
-                                        <td><?php echo $faq->product_title; ?></td>
+                                        <td><?php echo $faq->showroom_title; ?></td>
                                         <td>Details</td>
                                     </tr>
                                 <?php } ?>

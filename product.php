@@ -19,7 +19,7 @@
                     <?php
                     $table = 'product_info';
                     $order = 'ASC';
-                    $column = 'question_title';
+                    $column = 'product_title';
                     $dataType = 'obj';
                     $tableData = getTableDataByTableName($table, $order, $column, $dataType);
                     if (isset($tableData) && !empty($tableData)) {
