@@ -9,6 +9,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
+<script src="js/site_url.js"></script>
 <script src="vendor/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="vendor/bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -40,17 +41,68 @@
 <script src="vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/adminlte.min.js"></script>
-<script>
+<script type="text/javascript">
+    function getDistrictByDivision(division_id){
+        if(division_id){
+            var ajaxParam = {
+                division_id: division_id
+            };
+            $.ajax({
+                url: baseUrl + "admin/function/address_ajax_process.php?process_type=getDistrictByDivision",
+                type: 'POST',
+                dataType: 'html',
+                data: ajaxParam,
+                success: function (response) {
+                    $('#add_district_id').html(response);
+                }
+            });
+        }
+    }
+    function getUpazilaByDistrict(district_id){
+        if(district_id){
+            var ajaxParam = {
+                district_id: district_id
+            };
+            $.ajax({
+                url: baseUrl + "admin/function/address_ajax_process.php?process_type=getUpazilaByDistrict",
+                type: 'POST',
+                dataType: 'html',
+                data: ajaxParam,
+                success: function (response) {
+                    $('#add_upazila_id').html(response);
+                }
+            });
+        }
+    }
+    function getUnionByUpazila(upazila_id){
+        if(upazila_id){
+            var ajaxParam = {
+                upazila_id: upazila_id
+            };
+            $.ajax({
+                url: baseUrl + "admin/function/address_ajax_process.php?process_type=getUnionByUpazila",
+                type: 'POST',
+                dataType: 'html',
+                data: ajaxParam,
+                success: function (response) {
+                    $('#add_union_id').html(response);
+                }
+            });
+        }
+    }
   $(function () {
     $('#example1').DataTable({
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
     });
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace('editor1')
-    //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
-  })
+    
+    if($('#editor1').length) {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+            CKEDITOR.replace('editor1')
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5();
+        }
+    })
 </script>
 </body>
 </html>

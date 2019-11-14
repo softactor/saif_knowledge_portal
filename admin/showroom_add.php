@@ -27,6 +27,54 @@
                     </div>
                     <form role="form" method="post" action="">
                         <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="role">Address Division</label>
+                                        <select class="form-control" id="addr_div_id" name="addr_div_id" onchange="getDistrictByDivision(this.value)">
+                                            <option value="">Select</option>
+                                            <?php
+                                            $table = 'addr_divisions';
+                                            $order = 'ASC';
+                                            $column = 'name';
+                                            $dataType = 'obj';
+                                            $tableData = getTableDataByTableName($table, $order, $column, $dataType);
+                                            if (isset($tableData) && !empty($tableData)) {
+                                                foreach ($tableData as $data) {
+                                                    ?>
+                                                    <option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>   
+                                                    <?php
+                                                }
+                                            }
+                                            ?>                        
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="role">Address District</label>
+                                            <select class="form-control" name="addr_dis_id" id="add_district_id" onchange="getUpazilaByDistrict(this.value)">
+                                                <option value="">Select</option>                       
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="role">Address Upazila</label>
+                                        <select class="form-control" name="addr_upazila_id" id="add_upazila_id" onchange="getUnionByUpazila(this.value)">
+                                            <option value="">Select</option>                        
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="role">Address Union</label>
+                                        <select class="form-control" name="addr_union_id" id="add_union_id">
+                                            <option value="">Select</option>                       
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Division</label>
                                 <select class="form-control" id="division_id" name="division_id">

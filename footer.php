@@ -43,6 +43,7 @@
         <script src="frontend/js/jquery.stellar.min.js"></script>
         <!--Style Switcher -->
         <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
+        <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
     </body>
 
 </html>
