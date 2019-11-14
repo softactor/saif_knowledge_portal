@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputQuestion">Division</label>
+                                <label for="exampleInputQuestion">Concern Division</label>
                                 <select class="form-control" id="division_id" name="division_id">
                                     <option value="">Select</option>
                                     <?php
