@@ -8,12 +8,12 @@
     <section class="content-header">
         <?php include 'operation_message.php'; ?>
         <h1>
-            Showroom
+            Showroom/Service Center
             <small>Add</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Showroom</li>
+            <li class="active">Showroom/Service Center</li>
         </ol>
     </section>
 
@@ -28,7 +28,24 @@
                     <form role="form" method="post" action="">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputQuestion">Showroom Name</label>
+                                <label for="exampleInputQuestion">Division</label>
+                                <select class="form-control" id="division_id" name="division_id">
+                                    <option value="">Select</option>
+                                    <?php
+                                    $table = "division";
+                                    $groupData = getTableDataByTableName($table, 'asc', 'name', 'obj');
+                                    if (isset($groupData) && !empty($groupData)) {
+                                        foreach ($groupData as $gdata) {
+                                            ?>
+                                            <option value="<?php echo $gdata->id; ?>"><?php echo $gdata->name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputQuestion">Showroom/Service Center Name</label>
                                 <input type="text" class="form-control" id="showroom_title" name="showroom_title" placeholder="Enter showroom name">
                             </div>
                             <div class="form-group">

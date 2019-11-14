@@ -8,12 +8,12 @@
     <section class="content-header">
         <?php include 'operation_message.php'; ?>
         <h1>
-            Showroom
+            Showroom/Service Center
             <small>List</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Showroom</li>
+            <li class="active">Showroom/Service Center</li>
         </ol>
     </section>
 

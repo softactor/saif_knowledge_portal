@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 if(isset($_POST['faqSave']) && !empty($_POST['faqSave'])){
+    $division_id        =   $_POST['division_id'];
     $question_title     =   $_POST['question_title'];
     $question_answer    =   $_POST['question_answer'];
     $question_tag       =   $_POST['question_tag'];
@@ -14,16 +15,19 @@ if(isset($_POST['faqSave']) && !empty($_POST['faqSave'])){
     $isDuplicate        =   isDuplicateData($table, $where);
     if(!$isDuplicate){
         $fields     =   [
+            'division_id'       =>  $division_id,
             'question_title'    =>  $question_title,
             'question_answer'   =>  $question_answer,
             'question_tag'      =>  $question_tag
         ];
         $insert =   saveData($table, $fields); 
+        unset($_SESSION['division_id']);
         unset($_SESSION['question_title']);
         unset($_SESSION['question_answer']);
         unset($_SESSION['question_tag']);
         $_SESSION['success']    =   "Data have been successfully Saved.";
     }else{
+        $_SESSION['division_id']        =   $division_id;
         $_SESSION['question_title']     =   $question_title;
         $_SESSION['question_answer']    =   $question_answer;
         $_SESSION['question_tag']       =   $question_tag;

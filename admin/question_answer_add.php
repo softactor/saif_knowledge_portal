@@ -28,6 +28,23 @@
                     <form role="form" method="post" action="">
                         <div class="box-body">
                             <div class="form-group">
+                                <label for="exampleInputQuestion">Division</label>
+                                <select class="form-control" id="division_id" name="division_id">
+                                    <option value="">Select</option>
+                                    <?php
+                                    $table = "division";
+                                    $groupData = getTableDataByTableName($table, 'asc', 'name', 'obj');
+                                    if (isset($groupData) && !empty($groupData)) {
+                                        foreach ($groupData as $gdata) {
+                                            ?>
+                                            <option value="<?php echo $gdata->id; ?>"><?php echo $gdata->name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputQuestion">Question</label>
                                 <input type="text" class="form-control" id="question_title" name="question_title" placeholder="Enter question">
                             </div>
