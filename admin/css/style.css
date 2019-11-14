@@ -18,3 +18,7 @@ a.create_link{
 .json_alert_message{
     display: none;
 }
+.error_message{
+    font-style: italic;
+    color: red;
+}
