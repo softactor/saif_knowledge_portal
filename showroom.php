@@ -1,10 +1,5 @@
 <?php include 'header.php'; ?>
 <!-- =-=-=-=-=-=-= Main Area =-=-=-=-=-=-= -->
-<!-------------------------------------Datatables----->
-<link rel="stylesheet" href="frontend/css/bootstrap.min.css">
-<link rel="stylesheet" href="frontend/css/dataTables.bootstrap.min.css">
-<link rel="stylesheet" href="frontend/css/dataTable.custom.css">
-<!-------------------------------------Datatables----->
 <div class="main-content-area">
     <!-- =-=-=-=-=-=-= Latest Questions  =-=-=-=-=-=-= -->
     <section class="section-padding-80 white" id="questions">
