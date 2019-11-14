@@ -120,6 +120,37 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Designation</label>
+                                        <select class="form-control" id="designation" name="designation">
+                                            <option value="">Select</option>
+                                            <?php
+                                            $table      = "designations";
+                                            $groupData  = getTableDataByTableName($table, 'asc', 'name', 'obj');
+                                            if (isset($groupData) && !empty($groupData)) {
+                                                foreach ($groupData as $gdata) {
+                                                    ?>
+                                                    <option value="<?php echo $gdata->id; ?>"><?php echo $gdata->name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Email</label>
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputQuestion">Coverage area</label>
+                                <input type="text" class="form-control" id="cov_area" name="cov_area" placeholder="Enter Coverage area with comma seperated value">
+                            </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <input type="submit" name="showroomSave" value="Save" class="btn btn-primary" />

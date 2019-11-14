@@ -16,20 +16,27 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
     $showroom_address   =   $_POST['showroom_address'];
     $contact_name       =   $_POST['contact_name'];
     $contact_number     =   $_POST['contact_number'];
+    
+    $designation        =   $_POST['designation'];
+    $email              =   $_POST['email'];
+    $cov_area           =   $_POST['cov_area'];
     $table              =   "showrooms";
     $where              =   "showroom_title='$showroom_title'";
     $isDuplicate    =   isDuplicateData($table, $where);
     if(!$isDuplicate){
         $fields     =   [
-            'addr_div_id'      =>  $addr_div_id,
-            'addr_dis_id'      =>  $addr_dis_id,
-            'addr_upazila_id'  =>  $addr_upazila_id,
-            'addr_union_id'    =>  $addr_union_id,
+            'addr_div_id'       =>  $addr_div_id,
+            'addr_dis_id'       =>  $addr_dis_id,
+            'addr_upazila_id'   =>  $addr_upazila_id,
+            'addr_union_id'     =>  $addr_union_id,
             'division_id'       =>  $division_id,
             'showroom_title'    =>  $showroom_title,
             'showroom_address'  =>  $showroom_address,
             'contact_name'      =>  $contact_name,
             'contact_number'    =>  $contact_number,
+            'designation'       =>  $designation,
+            'email'             =>  $email,
+            'cov_area'          =>  $cov_area,
         ];
         $insert =   saveData($table, $fields); 
         unset($_SESSION['addr_div_id']);
@@ -41,6 +48,9 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
         unset($_SESSION['showroom_address']);
         unset($_SESSION['contact_name']);
         unset($_SESSION['contact_number']);
+        unset($_SESSION['designation']);
+        unset($_SESSION['email']);
+        unset($_SESSION['cov_area']);
         $_SESSION['success']    =   "Data have been successfully Saved.";
     }else{
         $_SESSION['addr_div_id']        =   $addr_div_id;
@@ -52,6 +62,9 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
         $_SESSION['showroom_address']   =   $showroom_address;
         $_SESSION['contact_name']       =   $contact_name;
         $_SESSION['contact_number']     =   $contact_number;
+        $_SESSION['designation']        =   $designation;
+        $_SESSION['email']              =   $email;
+        $_SESSION['cov_area']           =   $cov_area;
         $_SESSION['error']              =   "Duplicate data found!.";
     }
     header("location: showroom_add.php");
