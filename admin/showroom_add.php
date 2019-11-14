@@ -53,7 +53,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="role">Address District</label>
-                                            <select class="form-control" name="addr_dis_id" id="add_district_id" onchange="getUpazilaByDistrict(this.value)">
+                                            <select class="form-control" name="addr_dis_id" id="addr_dis_id" onchange="getUpazilaByDistrict(this.value)">
                                                 <option value="">Select</option>                       
                                             </select>
                                     </div>
@@ -61,7 +61,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="role">Address Upazila</label>
-                                        <select class="form-control" name="addr_upazila_id" id="add_upazila_id" onchange="getUnionByUpazila(this.value)">
+                                        <select class="form-control" name="addr_upazila_id" id="addr_upazila_id" onchange="getUnionByUpazila(this.value)">
                                             <option value="">Select</option>                        
                                         </select>
                                     </div>

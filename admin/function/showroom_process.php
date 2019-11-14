@@ -6,6 +6,11 @@
  * and open the template in the editor.
  */
 if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
+    $addr_div_id        =   $_POST['addr_div_id'];
+    $addr_dis_id        =   $_POST['addr_dis_id'];
+    $addr_upazila_id    =   $_POST['addr_upazila_id'];
+    $addr_union_id      =   $_POST['addr_union_id'];
+    
     $division_id        =   $_POST['division_id'];
     $showroom_title     =   $_POST['showroom_title'];
     $showroom_address   =   $_POST['showroom_address'];
@@ -16,6 +21,10 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
     $isDuplicate    =   isDuplicateData($table, $where);
     if(!$isDuplicate){
         $fields     =   [
+            'addr_div_id'      =>  $addr_div_id,
+            'addr_dis_id'      =>  $addr_dis_id,
+            'addr_upazila_id'  =>  $addr_upazila_id,
+            'addr_union_id'    =>  $addr_union_id,
             'division_id'       =>  $division_id,
             'showroom_title'    =>  $showroom_title,
             'showroom_address'  =>  $showroom_address,
@@ -23,6 +32,10 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
             'contact_number'    =>  $contact_number,
         ];
         $insert =   saveData($table, $fields); 
+        unset($_SESSION['addr_div_id']);
+        unset($_SESSION['addr_dis_id']);
+        unset($_SESSION['addr_upazila_id']);
+        unset($_SESSION['addr_union_id']);
         unset($_SESSION['division_id']);
         unset($_SESSION['showroom_title']);
         unset($_SESSION['showroom_address']);
@@ -30,6 +43,10 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
         unset($_SESSION['contact_number']);
         $_SESSION['success']    =   "Data have been successfully Saved.";
     }else{
+        $_SESSION['addr_div_id']        =   $addr_div_id;
+        $_SESSION['addr_dis_id']        =   $addr_dis_id;
+        $_SESSION['addr_upazila_id']    =   $addr_upazila_id;
+        $_SESSION['addr_union_id']      =   $addr_union_id;
         $_SESSION['division_id']        =   $division_id;
         $_SESSION['showroom_title']     =   $showroom_title;
         $_SESSION['showroom_address']   =   $showroom_address;
