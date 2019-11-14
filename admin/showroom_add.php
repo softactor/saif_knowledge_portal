@@ -92,23 +92,34 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputQuestion">Showroom/Service Center Name</label>
-                                <input type="text" class="form-control" id="showroom_title" name="showroom_title" placeholder="Enter showroom name">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Showroom/Service Center Name</label>
+                                        <input type="text" class="form-control" id="showroom_title" name="showroom_title" placeholder="Enter showroom name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Address</label>
+                                        <input type="text" class="form-control" id="showroom_address" name="showroom_address" placeholder="Enter address">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputQuestion">Address</label>
-                                <input type="text" class="form-control" id="showroom_address" name="showroom_address" placeholder="Enter address">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Contact Person</label>
+                                        <input type="text" class="form-control" id="contact_name" name="contact_name" placeholder="Enter contact person">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Contact Number</label>
+                                        <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputQuestion">Contact Person</label>
-                                <input type="text" class="form-control" id="contact_name" name="contact_name" placeholder="Enter contact person">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputQuestion">Contact Number</label>
-                                <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number">
-                            </div>
-                        </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
                             <input type="submit" name="showroomSave" value="Save" class="btn btn-primary" />
