@@ -110,3 +110,20 @@ function getDataRowByTable($table){
     }
     return "0";
 }
+function deleteRecordByTableAndId($table,$fieldName,$id){
+    global $conn;
+    $sql            = "DELETE FROM $table WHERE $fieldName=".$id;
+    if ($conn->query($sql) === TRUE) {
+        $feedbackData   =   [
+            'status'    =>  'success',
+            'message'   =>  'Data have been successfully Deleted',
+        ];
+        return $feedbackData;
+    } else {
+        $feedbackData   =   [
+            'status'    =>  'error',
+            'message'   =>  "Error: " . $sql . "<br>" . $conn->error,
+        ];
+        return $feedbackData;
+    }
+}

@@ -49,12 +49,15 @@
                                     $sl = 0;
                                     foreach ($tableData as $adata) {
                                         ?>
-                                        <tr>
+                                        <tr id="list_row_id_<?php echo $adata->id; ?>">
                                             <td><?php echo ++$sl; ?></td>
                                             <td><?php echo (isset($adata->showroom_title) && !empty($adata->showroom_title) ? $adata->showroom_title : 'No data'); ?></td>
                                             <td><?php echo (isset($adata->showroom_address) && !empty($adata->showroom_address) ? $adata->showroom_address : 'No data'); ?></td>
                                             <td><?php echo (isset($adata->contact_number) && !empty($adata->contact_number) ? $adata->contact_number : 'No data'); ?></td>
-                                            <td>Action</td>
+                                            <td>
+                                                <button type="button" class="btn btn-small"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'showrooms');"><i class="fa fa-close"></i></button>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

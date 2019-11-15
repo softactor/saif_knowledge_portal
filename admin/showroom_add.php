@@ -6,7 +6,6 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <?php include 'operation_message.php'; ?>
         <h1>
             Showroom/Service Center
             <small>Add</small>
@@ -25,12 +24,13 @@
                     <div class="box-header">
                         <a href="showroom_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
+                    <?php include 'operation_message.php'; ?>
                     <form role="form" method="post" action="">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="role">Address Division</label>
+                                        <label for="role">Address Division<span class="required_text"></span></label>
                                         <select class="form-control" id="addr_div_id" name="addr_div_id" onchange="getDistrictByDivision(this.value)">
                                             <option value="">Select</option>
                                             <?php
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="role">Address District</label>
+                                        <label for="role">Address District<span class="required_text"></span></label>
                                             <select class="form-control" name="addr_dis_id" id="add_district_id" onchange="getUpazilaByDistrict(this.value)">
                                                 <option value="">Select</option>
                                                 <?php
@@ -173,7 +173,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">Showroom/Service Center Name</label>
+                                        <label for="exampleInputQuestion">Showroom/Service Center Name<span class="required_text"></span></label>
                                         <input type="text" class="form-control" id="showroom_title" name="showroom_title" placeholder="Enter showroom name" value="<?php if(isset($_SESSION['showroom_title']) && !empty($_SESSION['showroom_title'])){ echo $_SESSION['showroom_title']; } ?>">
                                         <?php
                                             if(isset($_SESSION['error_data']['showroom_title']) && !empty($_SESSION['error_data']['showroom_title'])){
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">Address</label>
+                                        <label for="exampleInputQuestion">Address<span class="required_text"></span></label>
                                         <input type="text" class="form-control" id="showroom_address" name="showroom_address" placeholder="Enter address" value="<?php if(isset($_SESSION['showroom_address']) && !empty($_SESSION['showroom_address'])){ echo $_SESSION['showroom_address']; } ?>">
                                         <?php
                                             if(isset($_SESSION['error_data']['showroom_address']) && !empty($_SESSION['error_data']['showroom_address'])){
@@ -199,7 +199,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">Contact Person</label>
+                                        <label for="exampleInputQuestion">Contact Person<span class="required_text"></span></label>
                                         <input type="text" class="form-control" id="contact_name" name="contact_name" placeholder="Enter contact person" value="<?php if(isset($_SESSION['contact_name']) && !empty($_SESSION['contact_name'])){ echo $_SESSION['contact_name']; } ?>">
                                         <?php
                                             if(isset($_SESSION['error_data']['contact_name']) && !empty($_SESSION['error_data']['contact_name'])){
@@ -211,7 +211,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">Contact Number</label>
+                                        <label for="exampleInputQuestion">Contact Number<span class="required_text"></span></label>
                                         <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number" value="<?php if(isset($_SESSION['contact_number']) && !empty($_SESSION['contact_number'])){ echo $_SESSION['contact_number']; } ?>">
                                         <?php
                                             if(isset($_SESSION['error_data']['contact_number']) && !empty($_SESSION['error_data']['contact_number'])){
@@ -225,7 +225,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">Designation</label>
+                                        <label for="exampleInputQuestion">Designation<span class="required_text"></span></label>
                                         <select class="form-control" id="designation" name="designation">
                                             <option value="">Select</option>
                                             <?php

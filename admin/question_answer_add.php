@@ -6,7 +6,6 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <?php include 'operation_message.php'; ?>
         <h1>
             Question Answer
             <small>Add</small>
@@ -25,10 +24,11 @@
                     <div class="box-header">
                         <a href="question_answer_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
+                    <?php include 'operation_message.php'; ?>
                     <form role="form" method="post" action="">
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="exampleInputQuestion">Division</label>
+                                <label for="exampleInputQuestion">Division<span class="required_text"></span></label>
                                 <select class="form-control" id="division_id" name="division_id">
                                     <option value="">Select</option>
                                     <?php
@@ -37,24 +37,42 @@
                                     if (isset($groupData) && !empty($groupData)) {
                                         foreach ($groupData as $gdata) {
                                             ?>
-                                            <option value="<?php echo $gdata->id; ?>"><?php echo $gdata->name; ?></option>
+                                            <option value="<?php echo $gdata->id; ?>"<?php if(isset($_SESSION['division_id']) && $_SESSION['division_id']==$gdata->id){ echo 'selected'; } ?>><?php echo $gdata->name; ?></option>
                                             <?php
                                         }
                                     }
                                     ?>
                                 </select>
+                                <?php
+                                    if(isset($_SESSION['error_data']['division_id']) && !empty($_SESSION['error_data']['division_id'])){
+                                        echo '<div class="error_message">'.$_SESSION['error_data']['division_id'].'</div>';
+                                        unset($_SESSION['error_data']['division_id']);
+                                    }
+                                ?>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputQuestion">Question</label>
-                                <input type="text" class="form-control" id="question_title" name="question_title" placeholder="Enter question">
+                                <label for="exampleInputQuestion">Question<span class="required_text"></span></label>
+                                <input type="text" class="form-control" id="question_title" name="question_title" placeholder="Enter question" value="<?php if(isset($_SESSION['question_title']) && !empty($_SESSION['question_title'])){ echo $_SESSION['question_title']; } ?>">
+                                <?php
+                                    if(isset($_SESSION['error_data']['question_title']) && !empty($_SESSION['error_data']['question_title'])){
+                                        echo '<div class="error_message">'.$_SESSION['error_data']['question_title'].'</div>';
+                                        unset($_SESSION['error_data']['question_title']);
+                                    }
+                                ?>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputQuestion">Answer</label>
-                                <textarea id="editor1" name="question_answer" rows="10" cols="80"></textarea>
+                                <label for="exampleInputQuestion">Answer<span class="required_text"></span></label>
+                                <textarea id="editor1" name="question_answer" rows="10" cols="80"><?php if(isset($_SESSION['question_answer']) && !empty($_SESSION['question_answer'])){ echo $_SESSION['question_answer']; } ?></textarea>
+                                <?php
+                                    if(isset($_SESSION['error_data']['question_answer']) && !empty($_SESSION['error_data']['question_answer'])){
+                                        echo '<div class="error_message">'.$_SESSION['error_data']['question_answer'].'</div>';
+                                        unset($_SESSION['error_data']['question_answer']);
+                                    }
+                                ?>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Tag</label>
-                                <input type="text" class="form-control" id="question_tag" name="question_tag" placeholder="Enter Tag with comma separated value">
+                                <input type="text" class="form-control" id="question_tag" name="question_tag" placeholder="Enter Tag with comma separated value" value="<?php if(isset($_SESSION['question_tag']) && !empty($_SESSION['question_tag'])){ echo $_SESSION['question_tag']; } ?>">
                             </div>
                         </div>
                         <!-- /.box-body -->

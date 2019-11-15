@@ -41,6 +41,7 @@
 <script src="vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/adminlte.min.js"></script>
+<script src="js/sweetalert.js"></script>
 <script type="text/javascript">
     function getDistrictByDivision(division_id){
         if(division_id){
@@ -103,6 +104,40 @@
             $('.textarea').wysihtml5();
         }
     })
+    function confirm_delete_operation(delete_id, table){        
+        swal({
+            title               : "Are you sure?",
+            type                : "warning",
+            showCancelButton    : true,
+            confirmButtonClass  : "btn-danger",
+            confirmButtonText   : "Yes, delete it!",
+            closeOnConfirm      : false
+          },
+          function(){
+            var delete_row  =   "list_row_id_"+delete_id;  
+            var deleteUrl   =   baseUrl + "admin/function/common_process.php?process_type=common_delete";  
+            var ajaxParam = {
+                delete_id   : delete_id,
+                table       : table,
+                fieldName   : 'id'
+            };
+            $.ajax({
+                url     : deleteUrl,
+                type    : 'POST',
+                dataType: 'json',
+                data    : ajaxParam,
+                success: function (response) {
+                    if(response.status  ==  "success"){
+                        $('#'+delete_row).hide();
+                        swal("Deleted!", response.message, "success");
+                    }else{
+                        swal("Fail to delete!", response.message, "error");
+                    }
+                }
+            }); 
+            
+          });
+    }
 </script>
 </body>
 </html>

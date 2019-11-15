@@ -47,10 +47,13 @@
                                     $sl = 0;
                                     foreach ($tableData as $adata) {
                                         ?>
-                                        <tr>
+                                        <tr id="list_row_id_<?php echo $adata->id; ?>">
                                             <td><?php echo ++$sl; ?></td>
                                             <td><?php echo (isset($adata->question_title) && !empty($adata->question_title) ? $adata->question_title : 'No data'); ?></td>
-                                            <td>Action</td>
+                                            <td>
+                                                <button type="button" class="btn btn-small"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'faq');"><i class="fa fa-close"></i></button>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
