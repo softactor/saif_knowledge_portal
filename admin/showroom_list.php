@@ -27,7 +27,7 @@
                     </div>
                     <div class="box-body">
                         <?php
-                        $table = 'showrooms';
+                        $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'showrooms': "showrooms where division_id=".$_SESSION['logged']['division_id']);
                         $order = 'ASC';
                         $column = 'showroom_title';
                         $dataType = 'obj';

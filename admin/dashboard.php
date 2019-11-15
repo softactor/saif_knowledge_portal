@@ -27,8 +27,12 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3><?php echo getDataRowByTable('faq'); ?></h3>
-
+                            <h3>
+                                <?php
+                                    $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'faq': "faq where division_id=".$_SESSION['logged']['division_id']);  
+                                    echo getDataRowByTable($table);
+                                ?>
+                            </h3>
                             <p>Question Answer</p>
                         </div>
                         <div class="icon">
@@ -42,8 +46,12 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3><?php echo getDataRowByTable('product_info'); ?></h3>
-
+                            <h3>
+                                <?php
+                                    $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'product_info': "product_info where division_id=".$_SESSION['logged']['division_id']); 
+                                    echo getDataRowByTable($table);
+                                ?>
+                            </h3>
                             <p>Product</p>
                         </div>
                         <div class="icon">
@@ -58,8 +66,12 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3><?php echo getDataRowByTable('showrooms'); ?></h3>
-
+                            <h3>
+                                <?php
+                                    $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'showrooms': "showrooms where division_id=".$_SESSION['logged']['division_id']);
+                                    echo getDataRowByTable($table);
+                                ?>
+                            </h3>
                             <p>Showroom</p>
                         </div>
                         <div class="icon">

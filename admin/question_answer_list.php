@@ -27,7 +27,7 @@
                     </div>
                     <div class="box-body">
                         <?php
-                        $table = 'faq';
+                        $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'faq': "faq where division_id=".$_SESSION['logged']['division_id']);
                         $order = 'ASC';
                         $column = 'question_title';
                         $dataType = 'obj';

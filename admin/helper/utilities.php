@@ -127,3 +127,10 @@ function deleteRecordByTableAndId($table,$fieldName,$id){
         return $feedbackData;
     }
 }
+
+function is_super_admin($userType){
+    if($userType    ==  'su'){
+        return true;
+    }
+    return false;
+}

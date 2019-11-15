@@ -27,7 +27,7 @@
                     </div>
                     <div class="box-body">
                         <?php
-                        $table = 'product_info';
+                        $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'product_info': "product_info where division_id=".$_SESSION['logged']['division_id']);
                         $order = 'ASC';
                         $column = 'product_title';
                         $dataType = 'obj';

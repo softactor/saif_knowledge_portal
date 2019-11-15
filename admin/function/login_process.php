@@ -42,7 +42,9 @@ if (isset($_POST['login_submit']) && !empty($_POST['login_submit'])) {
                 $_SESSION['success']                =   $fname.' '.$lname." have been successfully loggedin.";
                 $_SESSION['logged']['user_name']    =   $fname.' '.$lname;
                 $_SESSION['logged']['user_id']      =   $user_id;
-                $_SESSION['logged']['status']         =   true;
+                $_SESSION['logged']['status']       =   true;
+                $_SESSION['logged']['user_type']    =   $row->user_type;
+                $_SESSION['logged']['division_id']  =   $row->division_id;
                 header("location: dashboard.php");
                 exit();
             }else{
