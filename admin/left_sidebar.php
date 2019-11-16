@@ -12,6 +12,7 @@
           <li><a href="question_answer_list.php"><i class="fa fa-circle-o text-red"></i> <span>FAQ</span></a></li>
           <li><a href="showroom_list.php"><i class="fa fa-circle-o text-yellow"></i> <span>Showroom/Service Center</span></a></li>
           <li><a href="product_list.php"><i class="fa fa-circle-o text-aqua"></i> <span>Product</span></a></li>
+          <li><a href="customer_information_add.php"><i class="fa fa-circle-o text-aqua"></i> <span>Customer Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
