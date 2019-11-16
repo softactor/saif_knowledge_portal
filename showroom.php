@@ -22,6 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Division</th>
                                     <th>Showroom</th>
                                     <th>Details</th>
                                 </tr>
@@ -33,6 +34,12 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $sl; ?></td>
+                                        <?php 
+                                            if(isset($faq->division_id) && !empty($faq->division_id)){
+                                                $table  =   "division where id=$faq->division_id";
+                                                echo $divisionData   = getNameByIdAndTable($table);
+                                            }
+                                        ?>
                                         <td><?php echo $faq->showroom_title; ?></td>
                                         <td>Details</td>
                                     </tr>
