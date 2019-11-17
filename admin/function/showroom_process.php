@@ -120,3 +120,28 @@ if(isset($_POST['showroomSave']) && !empty($_POST['showroomSave'])){
     header("location: showroom_add.php");
     exit();
 }
+if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_showroom_details_modal_data') {
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+    
+    $table      =   $_POST['table'];
+    $fieldName  =   $_POST['fieldName'];
+    $id         =   $_POST['id'];
+    $response   = getDataRowByTableAndId($table, $id);
+    if(isset($response) && !empty($response)){
+        $division_id        =    $response->division_id;
+        $showroom_title     =    $response->showroom_title;
+        $showroom_address   =    $response->showroom_address;
+        $contact_name       =    $response->contact_name;
+        $contact_number     =    $response->contact_number;
+        $designation        =    $response->designation;
+    ?>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><?php echo $showroom_title; ?></h4>
+        </div>
+        <div class="modal-body">
+            <?php echo $showroom_address; ?>
+        </div>
+    <?php }
+}

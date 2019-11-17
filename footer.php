@@ -65,7 +65,28 @@
                     });
                 }
             }
+            function get_showroom_details(id, table){
+                if(id){
+                    var url   =   baseUrl + "admin/function/showroom_process.php?process_type=get_showroom_details_modal_data";  
+                    var ajaxParam = {
+                        id          : id,
+                        table       : table,
+                        fieldName   : 'id'
+                    };
+                    $.ajax({
+                        url     : url,
+                        type    : 'POST',
+                        dataType: 'html',
+                        data    : ajaxParam,
+                        success: function (response) {
+                            $('#showroomDetailsModal').modal('show');
+                            $('#showroomDetailsBody').html(response);
+                        }
+                    });
+                }
+            }
         </script>
     </body>
 </html>
 <?php include 'frontend/modal/product_details_modal.php'; ?>
+<?php include 'frontend/modal/showroom_details_modal.php'; ?>
