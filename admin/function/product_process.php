@@ -85,6 +85,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
         $description   =    $response->description;
     ?>
         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
         </div>
         <div class="modal-body">
