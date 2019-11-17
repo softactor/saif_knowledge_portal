@@ -134,7 +134,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_showroom_detai
         $showroom_address   =    $response->showroom_address;
         $contact_name       =    $response->contact_name;
         $contact_number     =    $response->contact_number;
-        $designation        =    $response->designation;
+//        $designation        =    $response->designation;
     ?>
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
