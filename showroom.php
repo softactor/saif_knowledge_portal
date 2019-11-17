@@ -43,7 +43,7 @@
                                             ?>
                                         </td>
                                         <td><?php echo $faq->showroom_title; ?></td>
-                                        <td><button type="button" class="btn btn-small" onclick="get_showroom_details('<?php echo $faq->id; ?>', 'showrooms');"><i class="fa fa-close"></i></button></td>
+                                        <td><button type="button" class="btn btn-small" onclick="get_showroom_details('<?php echo $faq->id; ?>', 'showrooms');">Details</button></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

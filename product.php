@@ -45,7 +45,7 @@
                                         </td>
                                         <td><?php echo $faq->product_title; ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-small" onclick="get_product_details('<?php echo $faq->id; ?>', 'product_info');"><i class="fa fa-close"></i></button>
+                                            <button type="button" class="btn btn-small" onclick="get_product_details('<?php echo $faq->id; ?>', 'product_info');">Details</button>
                                         </td>
                                     </tr>
                                 <?php } ?>
