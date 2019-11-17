@@ -33,7 +33,7 @@
                                 foreach ($tableData as $faq_key => $faq) {
                                     ?>
                                     <tr>
-                                        <td><?php echo $sl; ?></td>
+                                        <td><?php echo $sl++; ?></td>
                                         <td>
                                             <?php
                                             if (isset($faq->division_id) && !empty($faq->division_id)) {

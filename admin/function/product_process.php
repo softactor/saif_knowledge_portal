@@ -68,3 +68,27 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
     header("location: product_add.php");
     exit();
 }
+if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_details_modal_data') {
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+    
+    $table      =   $_POST['table'];
+    $fieldName  =   $_POST['fieldName'];
+    $id         =   $_POST['id'];
+    $response   = getDataRowByTableAndId($table, $id);
+    if(isset($response) && !empty($response)){
+        $division_id    =    $response->division_id;
+        $product_title  =    $response->product_title;
+        $image_path     =    $response->image_path;
+        $tag            =    $response->tag;
+        $product_type   =    $response->product_type;
+        $description   =    $response->description;
+    ?>
+        <div class="modal-header">
+            <h4 class="modal-title"><?php echo $product_title; ?></h4>
+        </div>
+        <div class="modal-body">
+            <?php echo $description; ?>
+        </div>
+    <?php }
+}

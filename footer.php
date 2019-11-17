@@ -9,6 +9,7 @@
             </div>
         </footer>
         <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+        <script src="admin/js/site_url.js"></script>
         <script src="frontend/js/jquery.min.js"></script>
         <!-- Bootstrap Core Css  -->
         <script src="frontend/js/bootstrap.min.js"></script>
@@ -43,7 +44,28 @@
         <script src="frontend/js/jquery.stellar.min.js"></script>
         <!--Style Switcher -->
         <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
-        <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
+        <script type="text/javascript">
+            function get_product_details(id, table){
+                if(id){
+                    var url   =   baseUrl + "admin/function/product_process.php?process_type=get_product_details_modal_data";  
+                    var ajaxParam = {
+                        id          : id,
+                        table       : table,
+                        fieldName   : 'id'
+                    };
+                    $.ajax({
+                        url     : url,
+                        type    : 'POST',
+                        dataType: 'html',
+                        data    : ajaxParam,
+                        success: function (response) {
+                            $('#productDetailsModal').modal('show');
+                            $('#productDetailsBody').html(response);
+                        }
+                    });
+                }
+            }
+        </script>
     </body>
-
 </html>
+<?php include 'frontend/modal/product_details_modal.php'; ?>

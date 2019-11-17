@@ -34,7 +34,7 @@
                                 foreach ($tableData as $faq_key => $faq) {
                                     ?>
                                     <tr>
-                                        <td><?php echo $sl; ?></td>
+                                        <td><?php echo $sl++; ?></td>
                                         <td>
                                             <?php 
                                             if(isset($faq->division_id) && !empty($faq->division_id)){
@@ -44,7 +44,9 @@
                                         ?>
                                         </td>
                                         <td><?php echo $faq->product_title; ?></td>
-                                        <td>Details</td>
+                                        <td>
+                                            <button type="button" class="btn btn-small" onclick="get_product_details('<?php echo $faq->id; ?>', 'product_info');"><i class="fa fa-close"></i></button>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
