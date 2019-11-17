@@ -88,7 +88,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
         </div>
         <div class="modal-body">
-            <?php echo $description; ?>
+            <?php echo htmlspecialchars_decode($description); ?>
         </div>
     <?php }
 }
