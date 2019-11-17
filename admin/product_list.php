@@ -51,7 +51,7 @@
                                             <td><?php echo ++$sl; ?></td>
                                             <td><?php echo (isset($adata->product_title) && !empty($adata->product_title) ? $adata->product_title : 'No data'); ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-small"><i class="fa fa-pencil"></i></button>
+                                                <a href="product_edit.php?product_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>
                                                 <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'product_info');"><i class="fa fa-close"></i></button>
                                             </td>
                                         </tr>  
