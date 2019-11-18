@@ -55,7 +55,7 @@
                                             <td><?php echo (isset($adata->showroom_address) && !empty($adata->showroom_address) ? $adata->showroom_address : 'No data'); ?></td>
                                             <td><?php echo (isset($adata->contact_number) && !empty($adata->contact_number) ? $adata->contact_number : 'No data'); ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-small"><i class="fa fa-pencil"></i></button>
+                                                <a href="showroom_edit.php?showroom_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>
                                                 <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'showrooms');"><i class="fa fa-close"></i></button>
                                             </td>
                                         </tr>
