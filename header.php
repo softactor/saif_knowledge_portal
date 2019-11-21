@@ -76,12 +76,12 @@ include './admin/helper/utilities.php';
         </div>
         <!-- HEADER Navigation End -->
         <!-- =-=-=-=-=-=-= Search Bar =-=-=-=-=-=-= -->
-        <div class="full-section search-section-listing">
+<!--        <div class="full-section search-section-listing">
             <div class="search-area container">
                 <form autocomplete="off" method="get" class="search-form clearfix" id="search-form">
                     <input type="text" title="* Please enter a search term!" placeholder="Type your search terms here" class="search-term " autocomplete="off">
                     <input type="submit" value="Search" class="search-btn">
                 </form>
             </div>
-        </div>
+        </div>-->
         <!-- =-=-=-=-=-=-= Search Bar END =-=-=-=-=-=-= -->
