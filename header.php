@@ -19,7 +19,7 @@ include './admin/helper/utilities.php';
         <!-------------------------------------Datatables----->
         <link rel="stylesheet" href="frontend/css/bootstrap.min.css">
         <link rel="stylesheet" href="frontend/css/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="frontend/css/dataTable.custom.css">
+        <!--<link rel="stylesheet" href="frontend/css/dataTable.custom.css">-->
         <!-------------------------------------Datatables----->
         
         <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
