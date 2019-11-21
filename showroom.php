@@ -2,7 +2,7 @@
 <!-- =-=-=-=-=-=-= Main Area =-=-=-=-=-=-= -->
 <div class="main-content-area">
     <!-- =-=-=-=-=-=-= Latest Questions  =-=-=-=-=-=-= -->
-    <section class="section-padding-80 white" id="questions">
+    <section class="white" id="questions">
         <div class="container">
             <!-- Row -->
             <div class="row">
