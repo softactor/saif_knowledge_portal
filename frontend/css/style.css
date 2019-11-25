@@ -3743,3 +3743,9 @@ form.search-form input.search-btn {
     font-size: 11px;
 }
 }
+.online_registration_text_style{
+	padding:1%;
+}
+.online_registration_event_title_style{
+	color:blue;
+}

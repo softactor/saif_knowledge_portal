@@ -11,6 +11,7 @@ include 'function/common_process.php';
 include 'function/showroom_process.php';
 include 'function/faq_process.php';
 include 'function/product_process.php';
+include 'function/customer_relation_process.php';
 ?>
 <!DOCTYPE html>
 <html>

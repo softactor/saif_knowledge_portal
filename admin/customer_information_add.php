@@ -61,21 +61,21 @@
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">User Type<span class="required_text"></span></label>
                                         <div class="radio">
-                                            <label class="radio-inline"><input type="radio" name="product_type" value="1" <?php
-                                        if (isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1) {
+                                            <label class="radio-inline"><input type="radio" name="user_type" value="1" <?php
+                                        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
                                             echo 'checked';
                                         }
                                         ?>>Dealer</label>
-                                            <label class="radio-inline"><input type="radio" name="product_type" value="2" <?php
-                                        if (isset($_SESSION['product_type']) && $_SESSION['product_type'] == 2) {
+                                            <label class="radio-inline"><input type="radio" name="user_type" value="2" <?php
+                                        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 2) {
                                             echo 'checked';
                                         }
                                         ?>>General</label>
                                         </div>
 <?php
-if (isset($_SESSION['error_data']['product_type']) && !empty($_SESSION['error_data']['product_type'])) {
-    echo '<div class="error_message">' . $_SESSION['error_data']['product_type'] . '</div>';
-    unset($_SESSION['error_data']['product_type']);
+if (isset($_SESSION['error_data']['user_type']) && !empty($_SESSION['error_data']['user_type'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['user_type'] . '</div>';
+    unset($_SESSION['error_data']['user_type']);
 }
 ?>
                                     </div>
@@ -85,15 +85,15 @@ if (isset($_SESSION['error_data']['product_type']) && !empty($_SESSION['error_da
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">First Name<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="product_title" name="product_title" placeholder="Enter First Name" value="<?php
-                                               if (isset($_SESSION['product_title']) && !empty($_SESSION['product_title'])) {
-                                                   echo $_SESSION['product_title'];
+                                        <input type="text" class="form-control" id="product_title" name="first_name" placeholder="Enter First Name" value="<?php
+                                               if (isset($_SESSION['first_name']) && !empty($_SESSION['first_name'])) {
+                                                   echo $_SESSION['first_name'];
                                                }
                                                ?>">
 <?php
-if (isset($_SESSION['error_data']['product_title']) && !empty($_SESSION['error_data']['product_title'])) {
-    echo '<div class="error_message">' . $_SESSION['error_data']['product_title'] . '</div>';
-    unset($_SESSION['error_data']['product_title']);
+if (isset($_SESSION['error_data']['first_name']) && !empty($_SESSION['error_data']['first_name'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['first_name'] . '</div>';
+    unset($_SESSION['error_data']['first_name']);
 }
 ?>
                                     </div>
@@ -101,15 +101,15 @@ if (isset($_SESSION['error_data']['product_title']) && !empty($_SESSION['error_d
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Last Name<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="product_title" name="product_title" placeholder="Enter Last Name" value="<?php
-                                               if (isset($_SESSION['product_title']) && !empty($_SESSION['product_title'])) {
-                                                   echo $_SESSION['product_title'];
+                                        <input type="text" class="form-control" id="product_title" name="last_name" placeholder="Enter Last Name" value="<?php
+                                               if (isset($_SESSION['last_name']) && !empty($_SESSION['last_name'])) {
+                                                   echo $_SESSION['last_name'];
                                                }
                                                ?>">
 <?php
-if (isset($_SESSION['error_data']['product_title']) && !empty($_SESSION['error_data']['product_title'])) {
-    echo '<div class="error_message">' . $_SESSION['error_data']['product_title'] . '</div>';
-    unset($_SESSION['error_data']['product_title']);
+if (isset($_SESSION['error_data']['last_name']) && !empty($_SESSION['error_data']['last_name'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['last_name'] . '</div>';
+    unset($_SESSION['error_data']['last_name']);
 }
 ?>
                                     </div>
@@ -119,7 +119,7 @@ if (isset($_SESSION['error_data']['product_title']) && !empty($_SESSION['error_d
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="role">Address Division<span class="required_text"></span></label>
-                                        <select class="form-control" id="addr_div_id" name="addr_div_id" onchange="getDistrictByDivision(this.value)">
+                                        <select class="form-control" id="addr_div_id" name="addr_division" onchange="getDistrictByDivision(this.value)">
                                             <option value="">Select</option>
                                             <?php
                                             $table = 'addr_divisions';
@@ -130,7 +130,7 @@ if (isset($_SESSION['error_data']['product_title']) && !empty($_SESSION['error_d
                                             if (isset($tableData) && !empty($tableData)) {
                                                 foreach ($tableData as $data) {
                                                     ?>
-                                                    <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_div_id']) && $_SESSION['addr_div_id'] == $data->id) {
+                                                    <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_division']) && $_SESSION['addr_division'] == $data->id) {
                                             echo 'selected';
                                         } ?>><?php echo $data->name; ?></option>   
                                                 <?php
@@ -139,9 +139,9 @@ if (isset($_SESSION['error_data']['product_title']) && !empty($_SESSION['error_d
                                         ?>                        
                                         </select>
 <?php
-if (isset($_SESSION['error_data']['addr_div_id']) && !empty($_SESSION['error_data']['addr_div_id'])) {
-    echo '<div class="error_message">' . $_SESSION['error_data']['addr_div_id'] . '</div>';
-    unset($_SESSION['error_data']['addr_div_id']);
+if (isset($_SESSION['error_data']['addr_division']) && !empty($_SESSION['error_data']['addr_division'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['addr_division'] . '</div>';
+    unset($_SESSION['error_data']['addr_division']);
 }
 ?>
                                     </div>
@@ -149,10 +149,10 @@ if (isset($_SESSION['error_data']['addr_div_id']) && !empty($_SESSION['error_dat
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="role">Address District<span class="required_text"></span></label>
-                                        <select class="form-control" name="addr_dis_id" id="add_district_id" onchange="getUpazilaByDistrict(this.value)">
+                                        <select class="form-control" name="addr_district" id="add_district_id" onchange="getUpazilaByDistrict(this.value)">
                                             <option value="">Select</option>
                                             <?php
-                                            if (isset($_SESSION['addr_dis_id']) && !empty($_SESSION['addr_dis_id'])) {
+                                            if (isset($_SESSION['addr_district']) && !empty($_SESSION['addr_district'])) {
                                                 $table = 'addr_districts';
                                                 $order = 'ASC';
                                                 $column = 'name';
@@ -161,7 +161,7 @@ if (isset($_SESSION['error_data']['addr_div_id']) && !empty($_SESSION['error_dat
                                                 if (isset($tableData) && !empty($tableData)) {
                                                     foreach ($tableData as $data) {
                                                         ?>
-                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_dis_id']) && $_SESSION['addr_dis_id'] == $data->id) {
+                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_district']) && $_SESSION['addr_district'] == $data->id) {
                                             echo 'selected';
                                         } ?>><?php echo $data->name; ?></option>   
                                                     <?php
@@ -171,9 +171,9 @@ if (isset($_SESSION['error_data']['addr_div_id']) && !empty($_SESSION['error_dat
                                         ?>
                                         </select>
 <?php
-if (isset($_SESSION['error_data']['addr_dis_id']) && !empty($_SESSION['error_data']['addr_dis_id'])) {
-    echo '<div class="error_message">' . $_SESSION['error_data']['addr_dis_id'] . '</div>';
-    unset($_SESSION['error_data']['addr_dis_id']);
+if (isset($_SESSION['error_data']['addr_district']) && !empty($_SESSION['error_data']['addr_district'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['addr_district'] . '</div>';
+    unset($_SESSION['error_data']['addr_district']);
 }
 ?>
                                     </div>
@@ -181,10 +181,10 @@ if (isset($_SESSION['error_data']['addr_dis_id']) && !empty($_SESSION['error_dat
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="role">Address Upazila</label>
-                                        <select class="form-control" name="addr_upazila_id" id="add_upazila_id" onchange="getUnionByUpazila(this.value)">
+                                        <select class="form-control" name="addr_upazila" id="add_upazila_id" onchange="getUnionByUpazila(this.value)">
                                             <option value="">Select</option> 
                                             <?php
-                                            if (isset($_SESSION['addr_upazila_id']) && !empty($_SESSION['addr_upazila_id'])) {
+                                            if (isset($_SESSION['addr_upazila']) && !empty($_SESSION['addr_upazila'])) {
                                                 $table = 'addr_upazilas';
                                                 $order = 'ASC';
                                                 $column = 'name';
@@ -193,7 +193,7 @@ if (isset($_SESSION['error_data']['addr_dis_id']) && !empty($_SESSION['error_dat
                                                 if (isset($tableData) && !empty($tableData)) {
                                                     foreach ($tableData as $data) {
                                                         ?>
-                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_upazila_id']) && $_SESSION['addr_upazila_id'] == $data->id) {
+                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_upazila']) && $_SESSION['addr_upazila'] == $data->id) {
                                             echo 'selected';
                                         } ?>><?php echo $data->name; ?></option>   
             <?php
@@ -203,9 +203,9 @@ if (isset($_SESSION['error_data']['addr_dis_id']) && !empty($_SESSION['error_dat
 ?>
                                         </select>
                                             <?php
-                                            if (isset($_SESSION['error_data']['addr_upazila_id']) && !empty($_SESSION['error_data']['addr_upazila_id'])) {
-                                                echo '<div class="error_message">' . $_SESSION['error_data']['addr_upazila_id'] . '</div>';
-                                                unset($_SESSION['error_data']['addr_upazila_id']);
+                                            if (isset($_SESSION['error_data']['addr_upazila']) && !empty($_SESSION['error_data']['addr_upazila'])) {
+                                                echo '<div class="error_message">' . $_SESSION['error_data']['addr_upazila'] . '</div>';
+                                                unset($_SESSION['error_data']['addr_upazila']);
                                             }
                                             ?>
                                     </div>
@@ -213,10 +213,10 @@ if (isset($_SESSION['error_data']['addr_dis_id']) && !empty($_SESSION['error_dat
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="role">Address Union</label>
-                                        <select class="form-control" name="addr_union_id" id="add_union_id">
+                                        <select class="form-control" name="addr_union" id="add_union_id">
                                             <option value="">Select</option> 
                                             <?php
-                                            if (isset($_SESSION['addr_union_id']) && !empty($_SESSION['addr_union_id'])) {
+                                            if (isset($_SESSION['addr_union']) && !empty($_SESSION['addr_union'])) {
                                                 $table = 'addr_unions';
                                                 $order = 'ASC';
                                                 $column = 'name';
@@ -235,9 +235,9 @@ if (isset($_SESSION['error_data']['addr_dis_id']) && !empty($_SESSION['error_dat
 ?>
                                         </select>
 <?php
-if (isset($_SESSION['error_data']['addr_union_id']) && !empty($_SESSION['error_data']['addr_union_id'])) {
-    echo '<div class="error_message">' . $_SESSION['error_data']['addr_union_id'] . '</div>';
-    unset($_SESSION['error_data']['addr_union_id']);
+if (isset($_SESSION['error_data']['addr_union']) && !empty($_SESSION['error_data']['addr_union'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['addr_union'] . '</div>';
+    unset($_SESSION['error_data']['addr_union']);
 }
 ?>
                                     </div>
@@ -247,19 +247,25 @@ if (isset($_SESSION['error_data']['addr_union_id']) && !empty($_SESSION['error_d
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Birthday</label>
-                                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Date Of Birth">
+                                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Date Of Birth" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Email</label>
-                                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Email">
+                                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Email" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Contact<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Contact Number">
+                                        <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter Contact Number" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
+                                        <?php
+if (isset($_SESSION['error_data']['contact']) && !empty($_SESSION['error_data']['contact'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['contact'] . '</div>';
+    unset($_SESSION['error_data']['contact']);
+}
+?>
                                     </div>
                                 </div>
                             </div>
@@ -268,10 +274,10 @@ if (isset($_SESSION['error_data']['addr_union_id']) && !empty($_SESSION['error_d
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Are you using our Product</label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="optradio" checked>Yes
+                                            <input type="radio" name="is_using_product" <?php if(isset($_SESSION['is_using_product']) && $_SESSION['is_using_product'] == 1){ echo 'checked'; } ?>>Yes
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="optradio">No
+                                            <input type="radio" name="is_using_product" <?php if(isset($_SESSION['is_using_product']) && $_SESSION['is_using_product'] == 2){ echo 'checked'; } ?>>No
                                         </label>
                                     </div>
                                 </div>
@@ -279,10 +285,10 @@ if (isset($_SESSION['error_data']['addr_union_id']) && !empty($_SESSION['error_d
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">After sell any one contact you</label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="optradio" checked>Yes
+                                            <input type="radio" name="is_anyone_contact" <?php if(isset($_SESSION['is_anyone_contact']) && $_SESSION['is_anyone_contact'] == 1){ echo 'checked'; } ?>>Yes
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="optradio">No
+                                            <input type="radio" name="is_anyone_contact" <?php if(isset($_SESSION['is_anyone_contact']) && $_SESSION['is_anyone_contact'] == 2){ echo 'checked'; } ?>>No
                                         </label>
                                     </div>
                                 </div>
@@ -332,7 +338,7 @@ if (isset($_SESSION['error_data']['addr_union_id']) && !empty($_SESSION['error_d
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <input type="submit" name="ProductSave" value="Save" class="btn btn-primary" />
+                            <input type="submit" name="CustomerInformationAdd" value="Save" class="btn btn-primary" />
                         </div>
                     </form>
                     <!-- /.box-body -->
