@@ -8,12 +8,12 @@
     <section class="content-header">
         <?php include 'operation_message.php'; ?>
         <h1>
-            Product
+            Customer Info
             <small>List</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Product</li>
+            <li class="active">Customer Info</li>
         </ol>
     </section>
 
@@ -23,13 +23,13 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="product_add.php" class="create_link"><i class="fa fa-plus"></i> Add</a>
+                        <a href="customer_information_add.php" class="create_link"><i class="fa fa-plus"></i> Add</a>
                     </div>
                     <div class="box-body">
                         <?php
-                        $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'product_info': "product_info where division_id=".$_SESSION['logged']['division_id']);
+                        $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'customer_info': "customer_info where division_id=".$_SESSION['logged']['division_id']);
                         $order = 'ASC';
-                        $column = 'product_title';
+                        $column = 'first_name';
                         $dataType = 'obj';
                         $tableData = getTableDataByTableName($table, $order, $column, $dataType);
                         if (isset($tableData) && !empty($tableData)) {
@@ -39,6 +39,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Contact</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -49,10 +50,19 @@
                                         ?>
                                         <tr id="list_row_id_<?php echo $adata->id; ?>">
                                             <td><?php echo ++$sl; ?></td>
-                                            <td><?php echo (isset($adata->product_title) && !empty($adata->product_title) ? $adata->product_title : 'No data'); ?></td>
                                             <td>
-                                                <a href="product_edit.php?product_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'product_info');"><i class="fa fa-close"></i></button>
+                                                <?php
+                                                echo $adata->first_name.' '.$adata->last_name; 
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                echo $adata->contact; 
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <a href="customer_information_edit.php?customer_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>
+                                                <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'customer_info');"><i class="fa fa-close"></i></button>
                                             </td>
                                         </tr>  
                                     <?php } ?>

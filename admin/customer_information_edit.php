@@ -3,12 +3,18 @@
 <!-- Left side column. contains the logo and sidebar -->
 <?php include 'left_sidebar.php'; ?>
 <!-- Content Wrapper. Contains page content TEST-->
+<?php
+    if(isset($_GET['customer_id']) && !empty($_GET['customer_id'])){
+        $customer_id     =   $_GET['customer_id'];
+        $tableData       =   getDataRowByTableAndId('customer_info',$customer_id);   
+    }
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">        
         <h1>
             Customer
-            <small>Add</small>
+            <small>Edit</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -39,15 +45,11 @@
                                             if (isset($groupData) && !empty($groupData)) {
                                                 foreach ($groupData as $gdata) {
                                                     ?>
-                                                    <option value="<?php echo $gdata->id; ?>"<?php
-                                                    if (isset($_SESSION['division_id']) && $_SESSION['division_id'] == $gdata->id) {
-                                                        echo 'selected';
-                                                    }
-                                                    ?>><?php echo $gdata->name; ?></option>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
+                                                    <option value="<?php echo $gdata->id; ?>"<?php if(isset($tableData->division_id) && $tableData->division_id == $gdata->id){ echo 'selected'; } ?>><?php echo $gdata->name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                         <?php
                                         if (isset($_SESSION['error_data']['division_id']) && !empty($_SESSION['error_data']['division_id'])) {
@@ -61,16 +63,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">User Type<span class="required_text"></span></label>
                                         <div class="radio">
-                                            <label class="radio-inline"><input type="radio" name="user_type" value="1" <?php
-                                        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 1) {
-                                            echo 'checked';
-                                        }
-                                        ?>>Dealer</label>
-                                            <label class="radio-inline"><input type="radio" name="user_type" value="2" <?php
-                                        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 2) {
-                                            echo 'checked';
-                                        }
-                                        ?>>General</label>
+                                            <label class="radio-inline"><input type="radio" name="user_type" value="1" <?php if(isset($tableData->user_type) && $tableData->user_type == 1){ echo 'checked'; } ?>>Dealer</label>
+                                            <label class="radio-inline"><input type="radio" name="user_type" value="2"  <?php if(isset($tableData->user_type) && $tableData->user_type == 2){ echo 'checked'; } ?>>General</label>
                                         </div>
 <?php
 if (isset($_SESSION['error_data']['user_type']) && !empty($_SESSION['error_data']['user_type'])) {
@@ -85,11 +79,7 @@ if (isset($_SESSION['error_data']['user_type']) && !empty($_SESSION['error_data'
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">First Name<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="product_title" name="first_name" placeholder="Enter First Name" value="<?php
-                                               if (isset($_SESSION['first_name']) && !empty($_SESSION['first_name'])) {
-                                                   echo $_SESSION['first_name'];
-                                               }
-                                               ?>">
+                                        <input type="text" class="form-control" id="product_title" name="first_name" placeholder="Enter First Name" value="<?php if(isset($tableData->first_name) && !empty($tableData->first_name)){ echo $tableData->first_name; } ?>">
 <?php
 if (isset($_SESSION['error_data']['first_name']) && !empty($_SESSION['error_data']['first_name'])) {
     echo '<div class="error_message">' . $_SESSION['error_data']['first_name'] . '</div>';
@@ -101,11 +91,7 @@ if (isset($_SESSION['error_data']['first_name']) && !empty($_SESSION['error_data
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Last Name<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="product_title" name="last_name" placeholder="Enter Last Name" value="<?php
-                                               if (isset($_SESSION['last_name']) && !empty($_SESSION['last_name'])) {
-                                                   echo $_SESSION['last_name'];
-                                               }
-                                               ?>">
+                                        <input type="text" class="form-control" id="product_title" name="last_name" placeholder="Enter Last Name" value="<?php if(isset($tableData->last_name) && !empty($tableData->last_name)){ echo $tableData->last_name; } ?>">
 <?php
 if (isset($_SESSION['error_data']['last_name']) && !empty($_SESSION['error_data']['last_name'])) {
     echo '<div class="error_message">' . $_SESSION['error_data']['last_name'] . '</div>';
@@ -126,13 +112,11 @@ if (isset($_SESSION['error_data']['last_name']) && !empty($_SESSION['error_data'
                                             $order = 'ASC';
                                             $column = 'name';
                                             $dataType = 'obj';
-                                            $tableData = getTableDataByTableName($table, $order, $column, $dataType);
-                                            if (isset($tableData) && !empty($tableData)) {
-                                                foreach ($tableData as $data) {
+                                            $tableDatas = getTableDataByTableName($table, $order, $column, $dataType);
+                                            if (isset($tableDatas) && !empty($tableDatas)) {
+                                                foreach ($tableDatas as $data) {
                                                     ?>
-                                                    <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_division']) && $_SESSION['addr_division'] == $data->id) {
-                                            echo 'selected';
-                                        } ?>><?php echo $data->name; ?></option>   
+                                                    <option value="<?php echo $data->id; ?>" <?php if(isset($tableData->addr_division) && $tableData->addr_division == $data->id){ echo 'selected'; } ?>><?php echo $data->name; ?></option>   
                                                 <?php
                                             }
                                         }
@@ -152,18 +136,16 @@ if (isset($_SESSION['error_data']['addr_division']) && !empty($_SESSION['error_d
                                         <select class="form-control" name="addr_district" id="add_district_id" onchange="getUpazilaByDistrict(this.value)">
                                             <option value="">Select</option>
                                             <?php
-                                            if (isset($_SESSION['addr_district']) && !empty($_SESSION['addr_district'])) {
+                                            if (isset($tableData->addr_district) && !empty($tableData->addr_district)) {
                                                 $table = 'addr_districts';
                                                 $order = 'ASC';
                                                 $column = 'name';
                                                 $dataType = 'obj';
-                                                $tableData = getTableDataByTableName($table, $order, $column, $dataType);
-                                                if (isset($tableData) && !empty($tableData)) {
-                                                    foreach ($tableData as $data) {
+                                                $tableDatas = getTableDataByTableName($table, $order, $column, $dataType);
+                                                if (isset($tableDatas) && !empty($tableDatas)) {
+                                                    foreach ($tableDatas as $data) {
                                                         ?>
-                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_district']) && $_SESSION['addr_district'] == $data->id) {
-                                            echo 'selected';
-                                        } ?>><?php echo $data->name; ?></option>   
+                                                        <option value="<?php echo $data->id; ?>" <?php if(isset($tableData->addr_district) && $tableData->addr_district == $data->id){ echo 'selected'; } ?>><?php echo $data->name; ?></option>   
                                                     <?php
                                                 }
                                             }
@@ -189,13 +171,11 @@ if (isset($_SESSION['error_data']['addr_district']) && !empty($_SESSION['error_d
                                                 $order = 'ASC';
                                                 $column = 'name';
                                                 $dataType = 'obj';
-                                                $tableData = getTableDataByTableName($table, $order, $column, $dataType);
-                                                if (isset($tableData) && !empty($tableData)) {
-                                                    foreach ($tableData as $data) {
+                                                $tableDatas = getTableDataByTableName($table, $order, $column, $dataType);
+                                                if (isset($tableDatas) && !empty($tableDatas)) {
+                                                    foreach ($tableDatas as $data) {
                                                         ?>
-                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_upazila']) && $_SESSION['addr_upazila'] == $data->id) {
-                                            echo 'selected';
-                                        } ?>><?php echo $data->name; ?></option>   
+                                                        <option value="<?php echo $data->id; ?>" <?php if(isset($tableData->addr_upazila) && $tableData->addr_upazila == $data->id){ echo 'selected'; } ?>><?php echo $data->name; ?></option>   
             <?php
         }
     }
@@ -221,13 +201,11 @@ if (isset($_SESSION['error_data']['addr_district']) && !empty($_SESSION['error_d
                                                 $order = 'ASC';
                                                 $column = 'name';
                                                 $dataType = 'obj';
-                                                $tableData = getTableDataByTableName($table, $order, $column, $dataType);
-                                                if (isset($tableData) && !empty($tableData)) {
-                                                    foreach ($tableData as $data) {
+                                                $tableDatas = getTableDataByTableName($table, $order, $column, $dataType);
+                                                if (isset($tableDatas) && !empty($tableDatas)) {
+                                                    foreach ($tableDatas as $data) {
                                                         ?>
-                                                        <option value="<?php echo $data->id; ?>" <?php if (isset($_SESSION['addr_union_id']) && $_SESSION['addr_union_id'] == $data->id) {
-                                            echo 'selected';
-                                        } ?>><?php echo $data->name; ?></option>   
+                                                        <option value="<?php echo $data->id; ?>" <?php if(isset($tableData->addr_union) && $tableData->addr_union == $data->id){ echo 'selected'; } ?>><?php echo $data->name; ?></option>   
             <?php
         }
     }
@@ -247,19 +225,19 @@ if (isset($_SESSION['error_data']['addr_union']) && !empty($_SESSION['error_data
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Birthday</label>
-                                        <input type="text" class="form-control" id="dob" name="dob" placeholder="Enter Date Of Birth" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
+                                        <input type="text" class="form-control" id="dob" name="dob" placeholder="Enter Date Of Birth" value="<?php if(isset($tableData->dob) && !empty($tableData->dob)){ echo $tableData->dob; } ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Email</label>
-                                        <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Email" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
+                                        <input type="email" class="form-control" id="tag" name="email" placeholder="Enter Email" value="<?php if(isset($tableData->email) && !empty($tableData->email)){ echo $tableData->email; } ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Contact<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter Contact Number" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
+                                        <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter Contact Number" value="<?php if(isset($tableData->contact) && !empty($tableData->contact)){ echo $tableData->contact; } ?>">
                                         <?php
 if (isset($_SESSION['error_data']['contact']) && !empty($_SESSION['error_data']['contact'])) {
     echo '<div class="error_message">' . $_SESSION['error_data']['contact'] . '</div>';
