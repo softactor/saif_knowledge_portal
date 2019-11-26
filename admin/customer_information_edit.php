@@ -316,7 +316,8 @@ if (isset($_SESSION['error_data']['contact']) && !empty($_SESSION['error_data'][
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <input type="submit" name="CustomerInformationAdd" value="Save" class="btn btn-primary" />
+                            <input type='hidden' name="customer_edit_id" value="<?php echo $tableData->id; ?>">
+                            <input type="submit" name="CustomerInformationUpdate" value="Update" class="btn btn-primary" />
                         </div>
                     </form>
                     <!-- /.box-body -->
