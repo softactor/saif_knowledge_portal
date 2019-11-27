@@ -25,7 +25,7 @@
                         <a href="product_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
                     <?php include 'operation_message.php'; ?>
-                    <form role="form" method="post" action="">
+                    <form role="form" method="post" action="" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -88,6 +88,26 @@
                                         unset($_SESSION['error_data']['description']);
                                     }
                                 ?>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product Image</label>
+                                        <input type="file" class="form-control" id="product_image" name="product_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product Excel</label>
+                                        <input type="file" class="form-control" id="product_excel" name="product_excel">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product PDF</label>
+                                        <input type="file" class="form-control" id="product_pdf" name="product_pdf">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Tag</label>

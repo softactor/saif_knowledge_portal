@@ -6,16 +6,15 @@
  * and open the template in the editor.
  */
 if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
-    $division_id = $_POST['division_id'];
-    $product_title = $_POST['product_title'];
-    $description = $_POST['description'];
-    $tag = $_POST['tag'];
-    $product_type = $_POST['product_type'];
-    $table = "product_info";
-    $where = "product_title='$product_title'";
-    $isDuplicate = isDuplicateData($table, $where);
+    $division_id    = $_POST['division_id'];
+    $product_title  = $_POST['product_title'];
+    $description    = $_POST['description'];
+    $tag            = $_POST['tag'];
+    $product_type   = $_POST['product_type'];
+    $table          = "product_info";
+    $where          = "product_title='$product_title'";
+    $isDuplicate    = isDuplicateData($table, $where);
     if (!$isDuplicate) {
-
         $error = false;
         $_SESSION['error_data'] = [];
         if (empty($division_id)) {
