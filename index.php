@@ -16,7 +16,7 @@
                                         <div class="row">
                                             <div id="faq" class="col-md-12">
                                                 <div class="jumbotron text-center">
-                                                    <h1 class="service_title">Frequently asking questions</h1>
+                                                    <h1 class="service_title">Frequently Asked Questions</h1>
                                                 </div>
                                                 <div class="panel-group" id="accordion">
                                                     <?php
