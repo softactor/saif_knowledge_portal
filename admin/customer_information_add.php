@@ -71,6 +71,11 @@
                                             echo 'checked';
                                         }
                                         ?>>General</label>
+                                        <label class="radio-inline"><input type="radio" name="user_type" value="3" <?php
+                                        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 3) {
+                                            echo 'checked';
+                                        }
+                                        ?>>Company</label>    
                                         </div>
 <?php
 if (isset($_SESSION['error_data']['user_type']) && !empty($_SESSION['error_data']['user_type'])) {
@@ -245,9 +250,26 @@ if (isset($_SESSION['error_data']['addr_union']) && !empty($_SESSION['error_data
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputQuestion">Birthday</label>
-                                        <input type="text" class="form-control" id="dob" name="dob" placeholder="Enter Date Of Birth" value="<?php if(isset($_SESSION['product_type']) && $_SESSION['product_type'] == 1){ echo 'checked'; } ?>">
+                                    <div class="form-group row">
+                                        <label class="col-md-12">Date of Birth</label>
+                                        <div class="col-md-4">
+                                            <select name="birth_day" id="birth_day" class="form-control">
+                                                <option value="">Please Select</option>
+                                                <?php formDay(); ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select name="birth_month" id="birth_month" class="form-control">
+                                                <option value="">Please Select</option>
+                                                <?php formMonth(); ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select name="birth_year" id="birth_year" class="form-control">
+                                                <option value="">Please Select</option>
+                                                <?php formYear(); ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

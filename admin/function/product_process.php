@@ -6,6 +6,57 @@
  * and open the template in the editor.
  */
 if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
+    /**************************Product Image Save Start:****************/
+    
+    $productImage   =   $_FILES['product_image'];
+    print '<pre>';
+    print_r($productImage);
+    print '</pre>';
+    exit;
+    
+            
+    $target_dir     = "uploads/";
+    $target_file    = $target_dir . basename($_FILES["product_image"]["name"]);
+    $uploadOk       = 1;
+    $imageFileType  = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    $check          = getimagesize($_FILES["product_image"]["tmp_name"]);
+    if($check == false) {
+        $uploadOk      = 0;
+        $_SESSION['error_data']['image_type'] = 'Please upload a image file';
+    }
+    // Check file size
+    if ($_FILES["product_image"]["size"] > 500000) {
+        $uploadOk      = 0;
+        $_SESSION['error_data']['image_size'] = 'Sorry, Image file is too large.';
+    }
+    // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        $uploadOk      = 0;
+        $_SESSION['error_data']['image_allowed_type'] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
+    }
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        $error = true;
+        $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
+    // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
+            $_SESSION['error_data']['image_uploaded_msg'] = "The file ". basename( $_FILES["product_image"]["name"]). " has been uploaded.";
+        } else {
+            $error = true;
+            $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
+        }
+    }
+    
+    print '<pre>';
+    print_r($_SESSION);
+    print '</pre>';
+    exit;
+    
+
+    /**************************Product Image Save End:******************/
     $division_id    = $_POST['division_id'];
     $product_title  = $_POST['product_title'];
     $description    = $_POST['description'];
