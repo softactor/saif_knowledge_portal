@@ -114,3 +114,38 @@ if (isset($_POST['faqUpdate']) && !empty($_POST['faqUpdate'])) {
     header("location: question_answer_edit.php?faq_id=$faq_edit_id");
     exit();
 }
+if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_division_wise_faq') {
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+    
+    $division_id=   $_POST['division_id'];
+    $table      =   $_POST['table'].' where division_id='.$division_id;
+    $tableData   = getTableDataByTableName($table, $order = 'asc', $column='question_title', $dataType = 'obj');
+    if (isset($tableData) && !empty($tableData)) {
+        foreach ($tableData as $faq_key => $faq) {
+            ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapse-<?php echo $faq_key; ?>">
+                            <span class="faq_question_title"><?php echo $faq->question_title; ?></span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-<?php echo $faq_key; ?>" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            <?php echo $faq->question_answer; ?>
+                        </p>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="btn-group btn-group-xs"><span class="btn">Was this question useful?</span>
+                            <a class="btn btn-success" href="#"><i class="fa fa-thumbs-up"></i> Yes</a> 
+                            <a class="btn btn-danger" href="#"><i class="fa fa-thumbs-down"></i> No</a></div>
+                    </div>
+                </div>
+            </div>
+        <?php }
+    }
+}

@@ -1,7 +1,10 @@
 <?php 
 include 'admin/connection/connect.php';
 include './admin/helper/utilities.php';
-    
+$link = $_SERVER['PHP_SELF'];
+$link_array = explode('/',$link);
+$page = end($link_array);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +34,7 @@ include './admin/helper/utilities.php';
         <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
         <link rel="stylesheet" type="text/css" href="frontend/css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="frontend/css/owl.style.css">
+        <link rel="stylesheet" type="text/css" href="frontend/css/site_custom_style.css">
         <!-- =-=-=-=-=-=-= Google Fonts =-=-=-=-=-=-= -->
         <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">-->
         <!-- =-=-=-=-=-=-= Highliter Css =-=-=-=-=-=-= -->
@@ -49,7 +53,7 @@ include './admin/helper/utilities.php';
 
     <body>
         <!-- =-=-=-=-=-=-= HEADER Navigation =-=-=-=-=-=-= -->
-        <div class="navbar navbar-default">
+        <div class="navbar navbar-default custom-navbar-style">
             <div class="container">
                 <!-- header -->
                 <div class="navbar-header">
@@ -68,9 +72,9 @@ include './admin/helper/utilities.php';
                 <div class="navbar-collapse collapse">
                     <!-- right bar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><div class="btn-nav"><a href="index.php" class="btn btn-primary btn-small navbar-btn">FAQ</a></div></li>
-                        <li><div class="btn-nav"><a href="product.php" class="btn btn-primary btn-small navbar-btn">PRODUCTS</a></div></li>
-                        <li><div class="btn-nav"><a href="showroom.php" class="btn btn-primary btn-small navbar-btn">SHOWROOMS</a></div></li>
+                        <li><div class="btn-nav"><a href="index.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'index.php'){ echo ' active-menu'; } ?>">FAQ</a></div></li>
+                        <li><div class="btn-nav"><a href="product.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'product.php'){ echo ' active-menu'; } ?>">PRODUCTS</a></div></li>
+                        <li><div class="btn-nav"><a href="showroom.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'showroom.php'){ echo ' active-menu'; } ?>">SHOWROOMS</a></div></li>
                     </ul>
                 </div>
             </div>

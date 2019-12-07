@@ -29,7 +29,7 @@
 		</script>
 		<!-------------------------------------Datatables----->
         <!-- Jquery Smooth Scroll  -->
-        <script src="frontend/js/jquery.smoothscroll.js"></script>
+        <!--<script src="frontend/js/jquery.smoothscroll.js"></script>-->
         <!-- Jquery Easing -->
         <script type="text/javascript" src="frontend/js/easing.js"></script>
         <!-- Jquery Counter -->
@@ -44,6 +44,7 @@
         <script src="frontend/js/jquery.stellar.min.js"></script>
         <!--Style Switcher -->
         <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
+        <script src="frontend/js/faq_live_search.js"></script>
         <script type="text/javascript">
             function get_product_details(id, table){
                 if(id){
@@ -81,6 +82,25 @@
                         success: function (response) {
                             $('#showroomDetailsModal').modal('show');
                             $('#showroomDetailsBody').html(response);
+                        }
+                    });
+                }
+            }
+            function getDivisionWiseFaq(division_id, table){
+                if(division_id){
+                    var url   =   baseUrl + "admin/function/faq_process.php?process_type=get_division_wise_faq";  
+                    var ajaxParam = {
+                        division_id : division_id,
+                        table       : table,
+                        fieldName   : 'id'
+                    };
+                    $.ajax({
+                        url     : url,
+                        type    : 'POST',
+                        dataType: 'html',
+                        data    : ajaxParam,
+                        success: function (response) {
+                            $('#accordion').html(response);
                         }
                     });
                 }

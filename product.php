@@ -7,10 +7,12 @@
         <div class="container">
             <!-- Row -->
             <div class="row">
+                <div class="col-md-4">
+                    <h1 class="service_title">Product Information</h1>
+                </div>                
+            </div>
+            <div class="row">
                 <div class="col-md-12 col-sm-12">
-                    <div class="jumbotron text-center">
-                        <h1 class="service_title">Product Information</h1>
-                    </div>
                     <?php
                     $table = 'product_info';
                     $order = 'ASC';
