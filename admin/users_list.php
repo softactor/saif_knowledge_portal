@@ -39,8 +39,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Division</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Name</th>
                                         <th>Email</th>
                                         <th>Action</th>
                                     </tr>
@@ -61,7 +60,6 @@
                                                 ?>
                                             </td>
                                             <td><?php echo (isset($adata->first_name) && !empty($adata->first_name) ? $adata->first_name : 'No data'); ?></td>
-                                            <td><?php echo (isset($adata->last_name) && !empty($adata->last_name) ? $adata->last_name : 'No data'); ?></td>
                                             <td><?php echo (isset($adata->email) && !empty($adata->email) ? $adata->email : 'No data'); ?></td>
                                             <td>
                                                 <a href="user_edit.php?user_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>

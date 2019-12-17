@@ -56,7 +56,7 @@
                                             if (isset($tableData) && !empty($tableData)) {
                                                 foreach ($tableData as $faq_key => $faq) {
                                                     ?>
-                                                    <div class="panel panel-default">
+                                                    <div class="panel panel-default AccordionContainer">
                                                         <div class="panel-heading">
                                                             <h4 class="panel-title">
                                                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"

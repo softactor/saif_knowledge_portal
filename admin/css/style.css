@@ -28,3 +28,16 @@ a.create_link{
     font-style: italic;
     color: red;
 }
+
+.product_files_section{
+    
+}
+
+.product_files{
+    width: 30px;
+    height: 35px;
+    margin: 0px 2px;
+    float: left;
+    padding: 5px;
+    border: 1px solid greenyellow;
+}

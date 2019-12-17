@@ -6,64 +6,17 @@
  * and open the template in the editor.
  */
 if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
-    /**************************Product Image Save Start:****************/
-    
-    $productImage   =   $_FILES['product_image'];
-    print '<pre>';
-    print_r($productImage);
-    print '</pre>';
-    exit;
-    
-            
-    $target_dir     = "uploads/";
-    $target_file    = $target_dir . basename($_FILES["product_image"]["name"]);
-    $uploadOk       = 1;
-    $imageFileType  = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    // Check if image file is a actual image or fake image
-    $check          = getimagesize($_FILES["product_image"]["tmp_name"]);
-    if($check == false) {
-        $uploadOk      = 0;
-        $_SESSION['error_data']['image_type'] = 'Please upload a image file';
-    }
-    // Check file size
-    if ($_FILES["product_image"]["size"] > 500000) {
-        $uploadOk      = 0;
-        $_SESSION['error_data']['image_size'] = 'Sorry, Image file is too large.';
-    }
-    // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-        $uploadOk      = 0;
-        $_SESSION['error_data']['image_allowed_type'] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        $error = true;
-        $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
-    // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
-            $_SESSION['error_data']['image_uploaded_msg'] = "The file ". basename( $_FILES["product_image"]["name"]). " has been uploaded.";
-        } else {
-            $error = true;
-            $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
-        }
-    }
-    
-    print '<pre>';
-    print_r($_SESSION);
-    print '</pre>';
-    exit;
-    
-
+    $image_path     =   '';
+    $excel_path     =   '';
+    $pdf_path       =   '';
     /**************************Product Image Save End:******************/
     $division_id    = $_POST['division_id'];
     $product_title  = $_POST['product_title'];
     $description    = $_POST['description'];
     $tag            = $_POST['tag'];
-    $product_type   = $_POST['product_type'];
+    $product_type   = (isset($_POST['product_type']) ? $_POST['product_type']: '');
     $table          = "product_info";
-    $where          = "product_title='$product_title'";
+    $where          = "product_title='$product_title' and division_id='$division_id'";
     $isDuplicate    = isDuplicateData($table, $where);
     if (!$isDuplicate) {
         $error = false;
@@ -84,6 +37,114 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
             $error = true;
             $_SESSION['error_data']['description'] = 'Description is required!';
         }
+        
+        /**************************Product Image Save Start:****************/  
+        if (isset($_FILES['product_image']['name']) && !empty($_FILES['product_image']['name'])) {
+            $numberOfRowsTable = "product_info where division_id='$division_id'";
+            $numberOfRows = getDataRowByTable($numberOfRowsTable);
+            $currentProductId = $numberOfRows + 1;
+            $target_dir = "uploads/";
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION));
+            $productFileName = "product_" . $currentProductId . "." . $imageFileType;
+            $target_file = $target_dir . $productFileName;
+            // Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES["product_image"]["tmp_name"]);
+            if ($check == false) {
+                $uploadOk = 0;
+                $_SESSION['error_data']['image_type'] = 'Please upload a image file';
+            }
+            // Check file size
+            if ($_FILES["product_image"]["size"] > 500000) {
+                $uploadOk = 0;
+                $_SESSION['error_data']['image_size'] = 'Sorry, Image file is too large.';
+            }
+            // Allow certain file formats
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                $uploadOk = 0;
+                $_SESSION['error_data']['image_allowed_type'] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
+            }
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                $error = true;
+                $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
+                // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
+                    $image_path = $productFileName;
+                    $_SESSION['error_data']['image_uploaded_msg'] = "The file " . basename($_FILES["product_image"]["name"]) . " has been uploaded.";
+                } else {
+                    $error = true;
+                    $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
+                }
+            }
+        }
+        /**************************Product Image Save End:****************/ 
+        
+        /**************************Product Excel Save Start:****************/  
+        if (isset($_FILES['product_excel']['name']) && !empty($_FILES['product_excel']['name'])) {
+            $numberOfRowsTable  = "product_info where division_id='$division_id'";
+            $numberOfRows       = getDataRowByTable($numberOfRowsTable);
+            $currentProductId   = $numberOfRows + 1;
+            $target_dir         = "uploads/";
+            $uploadOk           = 1;
+            $imageFileType      = strtolower(pathinfo($_FILES['product_excel']['name'], PATHINFO_EXTENSION));
+            $productFileName    = "excel_" . $currentProductId . "." . $imageFileType;
+            $target_file        = $target_dir . $productFileName;
+            // Allow certain file formats
+            if ($imageFileType != "xlsx") {
+                $uploadOk = 0;
+                $_SESSION['error_data']['image_allowed_type'] = 'Sorry, only Excel files are allowed.';
+            }
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                $error = true;
+                $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload Excel File.';
+                // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["product_excel"]["tmp_name"], $target_file)) {
+                    $excel_path = $productFileName;
+                    $_SESSION['error_data']['image_uploaded_msg'] = "The file " . basename($_FILES["product_excel"]["name"]) . " has been uploaded.";
+                } else {
+                    $error = true;
+                    $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
+                }
+            }
+        }
+        /**************************Product Excel Save End:****************/
+        
+        /**************************Product PDF Save Start:****************/  
+        if (isset($_FILES['product_pdf']['name']) && !empty($_FILES['product_pdf']['name'])) {
+            $numberOfRowsTable  = "product_info where division_id='$division_id'";
+            $numberOfRows       = getDataRowByTable($numberOfRowsTable);
+            $currentProductId   = $numberOfRows + 1;
+            $target_dir         = "uploads/";
+            $uploadOk           = 1;
+            $imageFileType      = strtolower(pathinfo($_FILES['product_pdf']['name'], PATHINFO_EXTENSION));
+            $productFileName    = "pdf_" . $currentProductId . "." . $imageFileType;
+            $target_file        = $target_dir . $productFileName;
+            // Allow certain file formats
+            if ($imageFileType != "pdf") {
+                $uploadOk = 0;
+                $_SESSION['error_data']['image_allowed_type'] = 'Sorry, only Excel files are allowed.';
+            }
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                $error = true;
+                $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload Excel File.';
+                // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["product_pdf"]["tmp_name"], $target_file)) {
+                    $pdf_path = $productFileName;
+                    $_SESSION['error_data']['image_uploaded_msg'] = "The file " . basename($_FILES["product_pdf"]["name"]) . " has been uploaded.";
+                } else {
+                    $error = true;
+                    $_SESSION['error_data']['image_uploaded_msg'] = 'Sorry, Failed to upload image.';
+                }
+            }
+        }
+        /**************************Product Excel Save End:****************/
+        
         if ($error) {
             $_SESSION['error']          = "Please fill up the required fields";
             $_SESSION['division_id']    = $division_id;
@@ -93,11 +154,14 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
             $_SESSION['tag']            = $tag;
         } else {
             $fields = [
-                'division_id' => $division_id,
-                'product_title' => $product_title,
-                'description' => $description,
-                'tag' => $tag,
-                'product_type' => $product_type,
+                'division_id'       => $division_id,
+                'product_title'     => $product_title,
+                'description'       => $description,
+                'tag'               => $tag,
+                'product_type'      => $product_type,
+                'image_path'        => $image_path,
+                'excel_path'        => $excel_path,
+                'pdf_path'          => $pdf_path,
             ];
             $insert = saveData($table, $fields);
             unset($_SESSION['division_id']);

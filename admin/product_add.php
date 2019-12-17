@@ -94,6 +94,20 @@
                                     <div class="form-group">
                                         <label for="exampleInputQuestion">Product Image</label>
                                         <input type="file" class="form-control" id="product_image" name="product_image">
+                                        <?php
+                                            if(isset($_SESSION['error_data']['image_type']) && !empty($_SESSION['error_data']['image_type'])){
+                                                echo '<div class="error_message">'.$_SESSION['error_data']['image_type'].'</div>';
+                                                unset($_SESSION['error_data']['image_type']);
+                                            }
+                                            if(isset($_SESSION['error_data']['image_size']) && !empty($_SESSION['error_data']['image_size'])){
+                                                echo '<div class="error_message">'.$_SESSION['error_data']['image_size'].'</div>';
+                                                unset($_SESSION['error_data']['image_size']);
+                                            }
+                                            if(isset($_SESSION['error_data']['image_allowed_type']) && !empty($_SESSION['error_data']['image_allowed_type'])){
+                                                echo '<div class="error_message">'.$_SESSION['error_data']['image_allowed_type'].'</div>';
+                                                unset($_SESSION['error_data']['image_allowed_type']);
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

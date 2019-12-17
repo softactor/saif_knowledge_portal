@@ -95,6 +95,64 @@
                                     }
                                 ?>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="product_files_section">
+                                        <?php if (isset($tableData->image_path) && !empty($tableData->image_path)) { ?>
+                                        <div class="product_files">
+                                            <img src="images/icon/image_pdf.png">
+                                        </div>
+                                        <?php }
+                                        ?>
+                                        <?php if (isset($tableData->excel_path) && !empty($tableData->excel_path)) { ?>
+                                        <div class="product_files">
+                                            <img src="images/icon/image_pdf.png">
+                                        </div>
+                                        <?php }
+                                        ?>
+                                        <?php if (isset($tableData->pdf_path) && !empty($tableData->pdf_path)) { ?>
+                                        <div class="product_files">
+                                            <img src="images/icon/image_pdf.png">
+                                        </div>
+                                        <?php }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product Image</label>
+                                        <input type="file" class="form-control" id="product_image" name="product_image">
+                                        <?php
+                                            if(isset($_SESSION['error_data']['image_type']) && !empty($_SESSION['error_data']['image_type'])){
+                                                echo '<div class="error_message">'.$_SESSION['error_data']['image_type'].'</div>';
+                                                unset($_SESSION['error_data']['image_type']);
+                                            }
+                                            if(isset($_SESSION['error_data']['image_size']) && !empty($_SESSION['error_data']['image_size'])){
+                                                echo '<div class="error_message">'.$_SESSION['error_data']['image_size'].'</div>';
+                                                unset($_SESSION['error_data']['image_size']);
+                                            }
+                                            if(isset($_SESSION['error_data']['image_allowed_type']) && !empty($_SESSION['error_data']['image_allowed_type'])){
+                                                echo '<div class="error_message">'.$_SESSION['error_data']['image_allowed_type'].'</div>';
+                                                unset($_SESSION['error_data']['image_allowed_type']);
+                                            }
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product Excel</label>
+                                        <input type="file" class="form-control" id="product_excel" name="product_excel">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Product PDF</label>
+                                        <input type="file" class="form-control" id="product_pdf" name="product_pdf">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputQuestion">Tag</label>
                                 <input type="text" class="form-control" id="tag" name="tag" placeholder="Enter Tag with comma separated value" value="<?php if(isset($tableData->tag) && !empty($tableData->tag)){ echo $tableData->tag; } ?>">

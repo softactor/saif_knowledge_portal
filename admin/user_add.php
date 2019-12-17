@@ -51,26 +51,14 @@
                                 ?>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">First Name<span class="required_text"></span></label>
+                                        <label for="exampleInputQuestion">Name<span class="required_text"></span></label>
                                         <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" value="<?php if(isset($_SESSION['first_name']) && !empty($_SESSION['first_name'])){ echo $_SESSION['first_name']; } ?>">
                                         <?php
                                             if(isset($_SESSION['error_data']['first_name']) && !empty($_SESSION['error_data']['first_name'])){
                                                 echo '<div class="error_message">'.$_SESSION['error_data']['first_name'].'</div>';
                                                 unset($_SESSION['error_data']['first_name']);
-                                            }
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="exampleInputQuestion">Last Name<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" value="<?php if(isset($_SESSION['last_name']) && !empty($_SESSION['last_name'])){ echo $_SESSION['last_name']; } ?>">
-                                        <?php
-                                            if(isset($_SESSION['error_data']['last_name']) && !empty($_SESSION['error_data']['last_name'])){
-                                                echo '<div class="error_message">'.$_SESSION['error_data']['last_name'].'</div>';
-                                                unset($_SESSION['error_data']['last_name']);
                                             }
                                         ?>
                                     </div>
