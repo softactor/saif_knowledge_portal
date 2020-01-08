@@ -31,7 +31,7 @@
                         <a href="product_list.php" class="create_link"><i class="fa fa-list"></i> List</a>
                     </div>
                     <?php include 'operation_message.php'; ?>
-                    <form role="form" method="post" action="">
+                    <form role="form" method="post" action="" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
