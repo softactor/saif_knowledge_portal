@@ -19,3 +19,11 @@ and open the template in the editor.
 .active-menu{
     background-color: blue;
 }
+.product_files{
+    width: 115px;
+    height: 150px;
+    margin: 0px 2px;
+    float: left;
+    padding: 5px 5px;
+    border: 1px solid greenyellow;
+}

@@ -34,10 +34,10 @@ a.create_link{
 }
 
 .product_files{
-    width: 30px;
-    height: 35px;
+    width: 115px;
+    height: 150px;
     margin: 0px 2px;
     float: left;
-    padding: 5px;
+    padding: 5px 5px;
     border: 1px solid greenyellow;
 }

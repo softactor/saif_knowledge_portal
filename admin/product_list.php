@@ -38,6 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Division</th>
                                         <th>Name</th>
                                         <th>Action</th>
                                     </tr>
@@ -49,6 +50,14 @@
                                         ?>
                                         <tr id="list_row_id_<?php echo $adata->id; ?>">
                                             <td><?php echo ++$sl; ?></td>
+                                            <td>
+                                                <?php 
+                                                    if(isset($adata->division_id) && !empty($adata->division_id)){
+                                                        $table  =   "division where id=$adata->division_id";
+                                                        echo $divisionData   = getNameByIdAndTable($table);
+                                                    }
+                                                ?>
+                                            </td>
                                             <td><?php echo (isset($adata->product_title) && !empty($adata->product_title) ? $adata->product_title : 'No data'); ?></td>
                                             <td>
                                                 <a href="product_edit.php?product_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>

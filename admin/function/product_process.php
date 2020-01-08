@@ -193,17 +193,50 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
     if(isset($response) && !empty($response)){
         $division_id    =    $response->division_id;
         $product_title  =    $response->product_title;
-        $image_path     =    $response->image_path;
+        $image_path     =    (isset($response->image_path) && !empty($response->image_path) ? $response->image_path:'');
+        //excel_path
+        $excel_path     =    (isset($response->excel_path) && !empty($response->excel_path) ? $response->excel_path:'');
+        //pdf_path
+        $pdf_path     =    (isset($response->pdf_path) && !empty($response->pdf_path) ? $response->pdf_path:'');
         $tag            =    $response->tag;
         $product_type   =    $response->product_type;
-        $description   =    $response->description;
+        $description   =     $response->description;
     ?>
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
         </div>
         <div class="modal-body">
-            <?php echo htmlspecialchars_decode($description); ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="front_product_files" style="float: right;">
+                        <?php if (isset($image_path)) { ?>
+                            <div class="product_files">
+                                <img src="admin/uploads/<?php echo $image_path; ?>" width="100">
+                            </div>
+                        <?php }
+                        ?>
+                        <?php if (isset($excel_path)) { ?>
+                            <div class="product_files">
+                                <a href="admin/uploads/<?php echo $excel_path; ?>" target="_blank"><img src="admin/images/icon/100X100_excel.png"></a>
+                            </div>
+                        <?php }
+                        ?>
+                        <?php if (isset($pdf_path)) { ?>
+                            <div class="product_files">
+                                <a href="admin/uploads/<?php echo $pdf_path; ?>" target="_blank"><img src="admin/images/icon/100X100_pdf.png"></a>
+                            </div>
+                        <?php }
+                        ?>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <?php echo htmlspecialchars_decode($description); ?>
+                </div>
+            </div>
         </div>
     <?php }
 }

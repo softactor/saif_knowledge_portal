@@ -100,19 +100,19 @@
                                     <div class="product_files_section">
                                         <?php if (isset($tableData->image_path) && !empty($tableData->image_path)) { ?>
                                         <div class="product_files">
-                                            <img src="images/icon/image_pdf.png">
+                                            <img src="uploads/<?php echo $tableData->image_path; ?>" width="100">
                                         </div>
                                         <?php }
                                         ?>
                                         <?php if (isset($tableData->excel_path) && !empty($tableData->excel_path)) { ?>
                                         <div class="product_files">
-                                            <img src="images/icon/image_pdf.png">
+                                            <a href="uploads/<?php echo $tableData->excel_path; ?>" target="_blank"><img src="images/icon/100X100_excel.png"></a>
                                         </div>
                                         <?php }
                                         ?>
                                         <?php if (isset($tableData->pdf_path) && !empty($tableData->pdf_path)) { ?>
                                         <div class="product_files">
-                                            <img src="images/icon/image_pdf.png">
+                                            <a href="uploads/<?php echo $tableData->pdf_path; ?>" target="_blank"><img src="images/icon/100X100_pdf.png"></a>
                                         </div>
                                         <?php }
                                         ?>
