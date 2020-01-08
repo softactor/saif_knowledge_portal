@@ -2,3 +2,5 @@ admin/connection
 admin/connection/connect.php
 admin/connection/connect.php
 admin/js/site_url.js
+admin/uploads
+admin/uploads/
