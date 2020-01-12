@@ -277,9 +277,7 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
         
         /**************************Product Image Save Start:****************/  
         if (isset($_FILES['product_image']['name']) && !empty($_FILES['product_image']['name'])) {
-            $numberOfRowsTable = "product_info where division_id='$division_id'";
-            $numberOfRows = getDataRowByTable($numberOfRowsTable);
-            $currentProductId = $numberOfRows + 1;
+            $currentProductId = $product_edit_id;
             $target_dir = "uploads/";
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION));
@@ -320,9 +318,7 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
         
         /**************************Product Excel Save Start:****************/  
         if (isset($_FILES['product_excel']['name']) && !empty($_FILES['product_excel']['name'])) {
-            $numberOfRowsTable  = "product_info where division_id='$division_id'";
-            $numberOfRows       = getDataRowByTable($numberOfRowsTable);
-            $currentProductId   = $numberOfRows + 1;
+            $currentProductId   = $product_edit_id;
             $target_dir         = "uploads/";
             $uploadOk           = 1;
             $imageFileType      = strtolower(pathinfo($_FILES['product_excel']['name'], PATHINFO_EXTENSION));
@@ -352,9 +348,7 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
         
         /**************************Product PDF Save Start:****************/  
         if (isset($_FILES['product_pdf']['name']) && !empty($_FILES['product_pdf']['name'])) {
-            $numberOfRowsTable  = "product_info where division_id='$division_id'";
-            $numberOfRows       = getDataRowByTable($numberOfRowsTable);
-            $currentProductId   = $numberOfRows + 1;
+            $currentProductId   = $product_edit_id;
             $target_dir         = "uploads/";
             $uploadOk           = 1;
             $imageFileType      = strtolower(pathinfo($_FILES['product_pdf']['name'], PATHINFO_EXTENSION));
