@@ -25,10 +25,6 @@ if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
             $error = true;
             $_SESSION['error_data']['first_name'] = 'First Name is required!';
         }
-        if (empty($last_name)) {
-            $error = true;
-            $_SESSION['error_data']['last_name'] = 'Last Name is required!';
-        }
         if (empty($email)) {
             $error = true;
             $_SESSION['error_data']['email'] = 'Email is required!';
@@ -92,10 +88,6 @@ if (isset($_POST['userUpdate']) && !empty($_POST['userUpdate'])) {
         if (empty($first_name)) {
             $error = true;
             $_SESSION['error_data']['first_name'] = 'First Name is required!';
-        }
-        if (empty($last_name)) {
-            $error = true;
-            $_SESSION['error_data']['last_name'] = 'Last Name is required!';
         }
         if (empty($email)) {
             $error = true;
