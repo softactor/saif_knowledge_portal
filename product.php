@@ -19,6 +19,7 @@
                                 <th>
                                     <div class="form-group">
                                         <select class="form-control" id="division_id" name="division_id" onchange="get_division_wise_product_data(this.value);">
+                                        <option value="">Select All</option>
                                             <?php
                                             $table = 'division';
                                             $order = 'ASC';
