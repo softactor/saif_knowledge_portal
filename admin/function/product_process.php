@@ -164,11 +164,6 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
                 'pdf_path'          => $pdf_path,
             ];
             $insert = saveData($table, $fields);
-            print '<pre>';
-            print_r($insert);
-            print '</pre>';
-            exit;
-            
             unset($_SESSION['division_id']);
             unset($_SESSION['product_title']);
             unset($_SESSION['description']);
