@@ -11,10 +11,10 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
     $pdf_path       =   '';
     /**************************Product Image Save End:******************/
     $division_id    = $_POST['division_id'];
-    $product_title  = mysqli_real_escape_string($conn,$_POST['product_title']);
+    $product_title  = mysqli_real_escape_string($conn, $_POST['product_title']);
     $description    = $_POST['description'];
     $tag            = $_POST['tag'];
-    $product_type   = (isset($_POST['product_type']) ? $_POST['product_type']: '');
+    $product_type   = (isset($_POST['product_type']) ? $_POST['product_type'] : '');
     $table          = "product_info";
     $where          = "product_title='$product_title' and division_id='$division_id'";
     $isDuplicate    = isDuplicateData($table, $where);
@@ -37,8 +37,8 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
             $error = true;
             $_SESSION['error_data']['description'] = 'Description is required!';
         }
-        
-        /**************************Product Image Save Start:****************/  
+
+        /**************************Product Image Save Start:****************/
         if (isset($_FILES['product_image']['name']) && !empty($_FILES['product_image']['name'])) {
             $numberOfRowsTable = "product_info where division_id='$division_id'";
             $numberOfRows = getDataRowByTable($numberOfRowsTable);
@@ -79,9 +79,9 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
                 }
             }
         }
-        /**************************Product Image Save End:****************/ 
-        
-        /**************************Product Excel Save Start:****************/  
+        /**************************Product Image Save End:****************/
+
+        /**************************Product Excel Save Start:****************/
         if (isset($_FILES['product_excel']['name']) && !empty($_FILES['product_excel']['name'])) {
             $numberOfRowsTable  = "product_info where division_id='$division_id'";
             $numberOfRows       = getDataRowByTable($numberOfRowsTable);
@@ -112,8 +112,8 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
             }
         }
         /**************************Product Excel Save End:****************/
-        
-        /**************************Product PDF Save Start:****************/  
+
+        /**************************Product PDF Save Start:****************/
         if (isset($_FILES['product_pdf']['name']) && !empty($_FILES['product_pdf']['name'])) {
             $numberOfRowsTable  = "product_info where division_id='$division_id'";
             $numberOfRows       = getDataRowByTable($numberOfRowsTable);
@@ -144,7 +144,7 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
             }
         }
         /**************************Product Excel Save End:****************/
-        
+
         if ($error) {
             $_SESSION['error']          = "Please fill up the required fields";
             $_SESSION['division_id']    = $division_id;
@@ -185,23 +185,23 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
 if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_details_modal_data') {
     include '../connection/connect.php';
     include '../helper/utilities.php';
-    
+
     $table      =   $_POST['table'];
     $fieldName  =   $_POST['fieldName'];
     $id         =   $_POST['id'];
     $response   = getDataRowByTableAndId($table, $id);
-    if(isset($response) && !empty($response)){
+    if (isset($response) && !empty($response)) {
         $division_id    =    $response->division_id;
         $product_title  =    $response->product_title;
-        $image_path     =    (isset($response->image_path) && !empty($response->image_path) ? $response->image_path:'');
+        $image_path     =    (isset($response->image_path) && !empty($response->image_path) ? $response->image_path : '');
         //excel_path
-        $excel_path     =    (isset($response->excel_path) && !empty($response->excel_path) ? $response->excel_path:'');
+        $excel_path     =    (isset($response->excel_path) && !empty($response->excel_path) ? $response->excel_path : '');
         //pdf_path
-        $pdf_path     =    (isset($response->pdf_path) && !empty($response->pdf_path) ? $response->pdf_path:'');
+        $pdf_path     =    (isset($response->pdf_path) && !empty($response->pdf_path) ? $response->pdf_path : '');
         $tag            =    $response->tag;
         $product_type   =    $response->product_type;
         $description   =     $response->description;
-    ?>
+?>
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><img src="../admin/images/icon/close.png" /></button>
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
@@ -238,13 +238,13 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
                 </div>
             </div>
         </div>
-    <?php }
+<?php }
 }
 
 if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
     $product_edit_id     = $_POST['product_edit_id'];
     $division_id         = $_POST['division_id'];
-    $product_title       = mysqli_real_escape_string($conn,$_POST['product_title']);
+    $product_title       = mysqli_real_escape_string($conn, $_POST['product_title']);
     $description         = $_POST['description'];
     $tag                 = $_POST['tag'];
     $product_type        = $_POST['product_type'];
@@ -271,11 +271,11 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
             $error = true;
             $_SESSION['error_data']['description'] = 'Description is required!';
         }
-        
+
         $table      = "product_info where id=$product_edit_id";
         $pdata      = getDataRowIdAndTable($table);
-        
-        /**************************Product Image Save Start:****************/  
+
+        /**************************Product Image Save Start:****************/
         if (isset($_FILES['product_image']['name']) && !empty($_FILES['product_image']['name'])) {
             $currentProductId = $product_edit_id;
             $target_dir = "uploads/";
@@ -314,9 +314,9 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
                 }
             }
         }
-        /**************************Product Image Save End:****************/ 
-        
-        /**************************Product Excel Save Start:****************/  
+        /**************************Product Image Save End:****************/
+
+        /**************************Product Excel Save Start:****************/
         if (isset($_FILES['product_excel']['name']) && !empty($_FILES['product_excel']['name'])) {
             $currentProductId   = $product_edit_id;
             $target_dir         = "uploads/";
@@ -345,8 +345,8 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
             }
         }
         /**************************Product Excel Save End:****************/
-        
-        /**************************Product PDF Save Start:****************/  
+
+        /**************************Product PDF Save Start:****************/
         if (isset($_FILES['product_pdf']['name']) && !empty($_FILES['product_pdf']['name'])) {
             $currentProductId   = $product_edit_id;
             $target_dir         = "uploads/";
@@ -375,7 +375,7 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
             }
         }
         /**************************Product Excel Save End:****************/
-        
+
         if ($error) {
             $_SESSION['error']          = "Please fill up the required fields";
             $_SESSION['division_id']    = $division_id;
@@ -390,13 +390,13 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
                 'description' => $description,
                 'tag' => $tag,
                 'product_type' => $product_type,
-                'image_path'        => (isset($image_path) && !empty($image_path) ? : $pdata->image_path),
-                'excel_path'        => (isset($excel_path) && !empty($excel_path) ? : $pdata->excel_path),
-                'pdf_path'          => (isset($pdf_path) && !empty($pdf_path) ? : $pdata->pdf_path)
+                'image_path'        => (isset($image_path) && !empty($image_path) ?: $pdata->image_path),
+                'excel_path'        => (isset($excel_path) && !empty($excel_path) ?: $pdata->excel_path),
+                'pdf_path'          => (isset($pdf_path) && !empty($pdf_path) ?: $pdata->pdf_path)
             ];
-            $image_path        = (isset($image_path) && !empty($image_path) ? $image_path: $pdata->image_path);
-            $excel_path        = (isset($excel_path) && !empty($excel_path) ? $excel_path: $pdata->excel_path);
-            $pdf_path          = (isset($pdf_path) && !empty($pdf_path) ? $pdf_path: $pdata->pdf_path);
+            $image_path        = (isset($image_path) && !empty($image_path) ? $image_path : $pdata->image_path);
+            $excel_path        = (isset($excel_path) && !empty($excel_path) ? $excel_path : $pdata->excel_path);
+            $pdf_path          = (isset($pdf_path) && !empty($pdf_path) ? $pdf_path : $pdata->pdf_path);
             $sql            = "UPDATE product_info set division_id='$division_id',product_title='$product_title',description='$description',image_path='$image_path',excel_path='$excel_path',pdf_path='$pdf_path',product_type='$product_type',tag='$tag' where id=$product_edit_id";
             $conn->query($sql);
             unset($_SESSION['division_id']);
@@ -416,4 +416,62 @@ if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
     }
     header("location: product_edit.php?product_id=$product_edit_id");
     exit();
+}
+
+if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProducts') {
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+
+    $column = array("p.id", "p.division_id","p.product_title");
+    $query = "SELECT p.id, p.division_id, p.product_title FROM product_info as p ";
+
+    if (isset($_POST["division_id"]) && !empty($_POST["division_id"])) {
+        $query .= " WHERE ";
+        $query .= "p.division_id = " . $_POST["division_id"];
+    }
+
+    if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
+        $query .= '(p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        $query .= 'OR p.product_title LIKE "%' . $_POST["search"]["value"] . '%") ';
+    }
+
+    if (isset($_POST["order"]) && !empty($_POST["order"])) {
+        $query .= ' ORDER BY ' . $column[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
+    } else {
+        $query .= ' ORDER BY p.id DESC ';
+    }
+
+    $query1 = '';
+    $limit  =   $_POST["length"];
+    if(isset($limit) && $limit!=-1){
+        $query1 .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+    }
+    $number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
+
+    $result = mysqli_query($conn, $query . $query1);
+
+    $data = array();
+
+    while ($row = mysqli_fetch_array($result)) {
+        $table_name     =   "product_info";
+        $division_id    =   $row["division_id"];
+        $primary_id     =   $row["id"];
+        $table          =   "division where id=$division_id";
+        
+        $sub_array      = array();
+        $sub_array[]    = getNameByIdAndTable($table);;
+        $sub_array[]    = $row["product_title"];
+        $sub_array[]    = '<button type="button" class="btn btn-small" onclick="get_product_details(\''.$primary_id.'\',\''.$table_name.'\');">Details</button>';
+        $data[]         = $sub_array;
+    }
+
+    $output = array(
+        "draw"              => intval($_POST["draw"]),
+        "recordsTotal"      =>  getDataRowByTable('product_info'),
+        "recordsFiltered"   => $number_filter_row,
+        "data"              => $data
+       );
+       
+       echo json_encode($output);
+       exit;
 }

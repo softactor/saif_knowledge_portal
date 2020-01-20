@@ -12,45 +12,33 @@
             </div>            
             <div class="row">
                 <div class="col-md-12 col-sm-12">                    
-                    <?php
-                    $table = 'showrooms';
-                    $order = 'ASC';
-                    $column = 'showroom_title';
-                    $dataType = 'obj';
-                    $tableData = getTableDataByTableName($table, $order, $column, $dataType);
-                    if (isset($tableData) && !empty($tableData)) {
-                        ?>
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="showroom_list" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Division</th>
+                                    <th>
+                                    <div class="form-group">
+                                        <select class="form-control" id="division_id" name="division_id" onchange="get_division_wise_showroom_data(this.value);">
+                                            <?php
+                                            $table = 'division';
+                                            $order = 'ASC';
+                                            $column = 'name';
+                                            $dataType = 'obj';
+                                            $divitableData = getTableDataByTableName($table, $order, $column, $dataType);
+                                            if (isset($divitableData) && !empty($divitableData)) {
+                                                foreach ($divitableData as $dividata) {
+                                            ?>
+                                                    <option value="<?php echo $dividata->id; ?>"><?php echo $dividata->name; ?></option>
+                                            <?php }
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    </th>
                                     <th>Showroom</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-                                $sl = 1;
-                                foreach ($tableData as $faq_key => $faq) {
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $sl++; ?></td>
-                                        <td>
-                                            <?php
-                                            if (isset($faq->division_id) && !empty($faq->division_id)) {
-                                                $table = "division where id=$faq->division_id";
-                                                echo $divisionData = getNameByIdAndTable($table);
-                                            }
-                                            ?>
-                                        </td>
-                                        <td><?php echo $faq->showroom_title; ?></td>
-                                        <td><button type="button" class="btn btn-small" onclick="get_showroom_details('<?php echo $faq->id; ?>', 'showrooms');">Details</button></td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
                         </table>
-                    <?php } ?>
+                </div>                        
                 </div>                        
             </div>
             <!-- Row End -->
