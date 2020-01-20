@@ -11,7 +11,7 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
     $pdf_path       =   '';
     /**************************Product Image Save End:******************/
     $division_id    = $_POST['division_id'];
-    $product_title  = $_POST['product_title'];
+    $product_title  = mysqli_real_escape_string($conn,$_POST['product_title']);
     $description    = $_POST['description'];
     $tag            = $_POST['tag'];
     $product_type   = (isset($_POST['product_type']) ? $_POST['product_type']: '');
@@ -164,6 +164,11 @@ if (isset($_POST['ProductSave']) && !empty($_POST['ProductSave'])) {
                 'pdf_path'          => $pdf_path,
             ];
             $insert = saveData($table, $fields);
+            print '<pre>';
+            print_r($insert);
+            print '</pre>';
+            exit;
+            
             unset($_SESSION['division_id']);
             unset($_SESSION['product_title']);
             unset($_SESSION['description']);
@@ -203,7 +208,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
         $description   =     $response->description;
     ?>
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal"><img src="../admin/images/icon/close.png" /></button>
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
         </div>
         <div class="modal-body">
@@ -244,7 +249,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
 if (isset($_POST['productUpdate']) && !empty($_POST['productUpdate'])) {
     $product_edit_id     = $_POST['product_edit_id'];
     $division_id         = $_POST['division_id'];
-    $product_title       = $_POST['product_title'];
+    $product_title       = mysqli_real_escape_string($conn,$_POST['product_title']);
     $description         = $_POST['description'];
     $tag                 = $_POST['tag'];
     $product_type        = $_POST['product_type'];

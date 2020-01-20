@@ -7,7 +7,7 @@
  */
 if (isset($_POST['faqSave']) && !empty($_POST['faqSave'])) {
     $division_id        = $_POST['division_id'];
-    $question_title     = $_POST['question_title'];
+    $question_title     = mysqli_real_escape_string($conn,$_POST['question_title']);
     $question_answer    = $_POST['question_answer'];
     $question_tag       = $_POST['question_tag'];
     $table              = "faq";
@@ -61,7 +61,7 @@ if (isset($_POST['faqSave']) && !empty($_POST['faqSave'])) {
 if (isset($_POST['faqUpdate']) && !empty($_POST['faqUpdate'])) {
     $faq_edit_id        = $_POST['faq_edit_id'];
     $division_id        = $_POST['division_id'];
-    $question_title     = $_POST['question_title'];
+    $question_title     = mysqli_real_escape_string($conn,$_POST['question_title']);
     $question_answer    = $_POST['question_answer'];
     $question_tag       = $_POST['question_tag'];
     $table              = "faq";
