@@ -12,7 +12,7 @@
             </div>            
             <div class="row">
                 <div class="col-md-12 col-sm-12">                    
-                        <table id="showroom_list" class="table table-striped table-bordered" style="width:100%">
+                        <table id="showroom_list" class="table table-striped table-bordered list-table-custom-style" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>

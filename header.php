@@ -35,6 +35,7 @@ $page = end($link_array);
         <link rel="stylesheet" type="text/css" href="frontend/css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="frontend/css/owl.style.css">
         <link rel="stylesheet" type="text/css" href="frontend/css/site_custom_style.css">
+        <link rel="stylesheet" type="text/css" href="frontend/css/custom_table_style.css">
         <!-- =-=-=-=-=-=-= Google Fonts =-=-=-=-=-=-= -->
         <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css">-->
         <!-- =-=-=-=-=-=-= Highliter Css =-=-=-=-=-=-= -->

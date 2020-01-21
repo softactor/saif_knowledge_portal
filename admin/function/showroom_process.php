@@ -305,7 +305,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendShowroo
         $sub_array      = array();
         $sub_array[]    = getNameByIdAndTable($table);;
         $sub_array[]    = $row["showroom_title"];
-        $sub_array[]    = '<button type="button" class="btn btn-small" onclick="get_showroom_details(\''.$primary_id.'\',\''.$table_name.'\');">Details</button>';
+        $sub_array[]    = '<button type="button" class="btn btn-small details-btn" onclick="get_showroom_details(\''.$primary_id.'\',\''.$table_name.'\');">Details</button>';
         $data[]         = $sub_array;
     }
 
