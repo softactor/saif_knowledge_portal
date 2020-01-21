@@ -282,7 +282,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendShowroo
     if (isset($_POST["order"]) && !empty($_POST["order"])) {
         $query .= ' ORDER BY ' . $column[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
     } else {
-        $query .= ' ORDER BY p.id DESC ';
+        $query .= ' ORDER BY p.showroom_title DESC ';
     }
 
     $query1 = '';
