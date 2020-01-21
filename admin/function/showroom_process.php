@@ -275,8 +275,8 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendShowroo
     }
 
     if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
-        $query .= '(p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
-        $query .= 'OR p.showroom_title LIKE "%' . $_POST["search"]["value"] . '%") ';
+        $query .= ' where p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        $query .= 'OR p.showroom_title LIKE "%' . $_POST["search"]["value"] . '%"';
     }
 
     if (isset($_POST["order"]) && !empty($_POST["order"])) {
