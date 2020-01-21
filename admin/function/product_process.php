@@ -203,14 +203,14 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
         $description   =     $response->description;
 ?>
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><img src="../admin/images/icon/close.png" /></button>
+            <button type="button" class="close" data-dismiss="modal"><img src="admin/images/icon/close.png" /></button>
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
         </div>
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-12">
                     <div class="front_product_files" style="float: right;">
-                        <?php if (isset($image_path)) { ?>
+                        <?php if (isset($image_path) && !empty($image_path)) { ?>
                             <div class="product_files">
                                 <img src="admin/uploads/<?php echo $image_path; ?>" width="100">
                             </div>
