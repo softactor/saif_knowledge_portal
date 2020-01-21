@@ -254,7 +254,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_showroom_detai
 //        $designation        =    $response->designation;
     ?>
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal"><img src="admin/images/icon/close.png" /></button>
             <h4 class="modal-title"><?php echo $showroom_title; ?></h4>
         </div>
         <div class="modal-body">
