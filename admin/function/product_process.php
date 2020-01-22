@@ -233,9 +233,18 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+            <?php if (isset($image_path) && !empty($image_path)) { ?>
+                <div class="col-md-9">
                     <?php echo htmlspecialchars_decode($description); ?>
                 </div>
+                <div class="col-md-3">
+                    <img class="img-responsive" src="admin/uploads/<?php echo $image_path; ?>">
+                </div>
+                <?php }else{ ?>
+                    <div class="col-md-12">
+                        <?php echo htmlspecialchars_decode($description); ?>   
+                    </div>
+                <?php } ?>
             </div>
         </div>
 <?php }
