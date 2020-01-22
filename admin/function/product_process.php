@@ -210,12 +210,6 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
             <div class="row">
                 <div class="col-md-12">
                     <div class="front_product_files" style="float: right;">
-                        <?php if (isset($image_path) && !empty($image_path)) { ?>
-                            <div class="product_files">
-                                <img src="admin/uploads/<?php echo $image_path; ?>" width="100">
-                            </div>
-                        <?php }
-                        ?>
                         <?php if (isset($excel_path)) { ?>
                             <div class="product_files">
                                 <a href="admin/uploads/<?php echo $excel_path; ?>" target="_blank"><img src="admin/images/icon/100X100_excel.png"></a>
