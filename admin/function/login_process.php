@@ -31,7 +31,7 @@ if (isset($_POST['login_submit']) && !empty($_POST['login_submit'])) {
         $emailsql    = "SELECT * FROM users where email='$email'";
         $result = $conn->query($emailsql);
         if ($result->num_rows > 0) {
-            $passsql    = "SELECT * FROM users where email='$email' AND password='$password'";
+            $passsql    = "SELECT * FROM users where email='$email' AND password='$password' AND user_type!='agent'";
             $presult = $conn->query($passsql);
             if ($presult->num_rows > 0) {
                 $row        =   $presult->fetch_object();
@@ -103,7 +103,6 @@ if (isset($_POST['user_login_submit']) && !empty($_POST['user_login_submit'])) {
             $presult = $conn->query($passsql);
             if ($presult->num_rows > 0) {                
                 $row        =   $presult->fetch_object();
-                if($row->user_type == 'su' || $row->user_type == 'agent'){
                     $fname      =   $row->first_name;
                     $lname      =   $row->last_name;
                     $user_id    =   $row->id;
@@ -115,11 +114,6 @@ if (isset($_POST['user_login_submit']) && !empty($_POST['user_login_submit'])) {
                     $_SESSION['logged']['user_type']    =   $row->user_type;
                     $_SESSION['logged']['division_id']  =   $row->division_id;
                     header("location: faq.php");
-                }else{
-                    $error_status                       =   true;
-                    $_SESSION['error']                  =   "Sorry You Are Not Authorized!.";
-                    header("location: index.php");
-                }
                 exit();
             }else{
                 $error_status                       =   true;
