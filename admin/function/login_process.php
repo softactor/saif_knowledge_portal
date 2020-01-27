@@ -101,19 +101,25 @@ if (isset($_POST['user_login_submit']) && !empty($_POST['user_login_submit'])) {
         if ($result->num_rows > 0) {
             $passsql    = "SELECT * FROM users where email='$email' AND password='$password'";
             $presult = $conn->query($passsql);
-            if ($presult->num_rows > 0) {
+            if ($presult->num_rows > 0) {                
                 $row        =   $presult->fetch_object();
-                $fname      =   $row->first_name;
-                $lname      =   $row->last_name;
-                $user_id    =   $row->id;
-                unset($_SESSION['error']);
-                $_SESSION['success']                =   $fname.' '.$lname." have been successfully loggedin.";
-                $_SESSION['logged']['user_name']    =   $fname.' '.$lname;
-                $_SESSION['logged']['user_id']      =   $user_id;
-                $_SESSION['logged']['status']       =   true;
-                $_SESSION['logged']['user_type']    =   $row->user_type;
-                $_SESSION['logged']['division_id']  =   $row->division_id;
-                header("location: faq.php");
+                if($row->user_type == 'su' || $row->user_type == 'agent'){
+                    $fname      =   $row->first_name;
+                    $lname      =   $row->last_name;
+                    $user_id    =   $row->id;
+                    unset($_SESSION['error']);
+                    $_SESSION['success']                =   $fname.' '.$lname." have been successfully loggedin.";
+                    $_SESSION['logged']['user_name']    =   $fname.' '.$lname;
+                    $_SESSION['logged']['user_id']      =   $user_id;
+                    $_SESSION['logged']['status']       =   true;
+                    $_SESSION['logged']['user_type']    =   $row->user_type;
+                    $_SESSION['logged']['division_id']  =   $row->division_id;
+                    header("location: faq.php");
+                }else{
+                    $error_status                       =   true;
+                    $_SESSION['error']                  =   "Sorry You Are Not Authorized!.";
+                    header("location: index.php");
+                }
                 exit();
             }else{
                 $error_status                       =   true;

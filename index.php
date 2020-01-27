@@ -40,6 +40,14 @@ include 'admin/function/login_process.php';
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
+                <?php 
+                    if (isset($_SESSION['error']) && !empty($_SESSION['error'])) { ?>
+                <div class="alert alert-warning">        
+                    <?php    echo $_SESSION['error'];
+                        unset($_SESSION['error']); ?>
+                </div>
+                <?php } ?>
+                    
                 <form action="" method="post">
                     <div class="form-group has-feedback">
                         <input type="email" name="email" class="form-control" placeholder="Email">
