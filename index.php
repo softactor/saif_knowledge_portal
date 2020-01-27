@@ -33,10 +33,10 @@ include 'admin/function/login_process.php';
         <!-- Google Font -->
         <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
     </head>
-    <body class="hold-transition login-page">
+    <body class="hold-transition login-page" style="background-image: url('frontend/images/login_bg.jpeg');background-repeat: no-repeat;background-attachment: fixed;background-position: center;">
         <div class="login-box">
             <div class="login-logo login-logo-overwrite">
-                <b>Knowledge Portal</b>
+                <b style="color: white;">Knowledge Portal</b>
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
