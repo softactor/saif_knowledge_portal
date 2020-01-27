@@ -38,6 +38,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>User Type</th>
                                         <th>Division</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -51,6 +52,14 @@
                                         ?>
                                         <tr id="list_row_id_<?php echo $adata->id; ?>">
                                             <td><?php echo ++$sl; ?></td>
+                                            <td>
+                                                <?php 
+                                                    if(isset($adata->user_type) && !empty($adata->user_type)){
+                                                        $table                  =   "user_type where short_name='$adata->user_type'";
+                                                        echo $userTypeName      = getNameByIdAndTable($table);
+                                                    }
+                                                ?>
+                                            </td>
                                             <td>
                                                 <?php 
                                                     if(isset($adata->division_id) && !empty($adata->division_id)){

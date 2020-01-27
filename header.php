@@ -1,4 +1,10 @@
-<?php 
+<?php
+session_start();
+date_default_timezone_set('Asia/Dhaka');
+if (!isset($_SESSION['logged']['status'])) {
+    header("location: index.php");
+    exit();
+} 
 include 'admin/connection/connect.php';
 include './admin/helper/utilities.php';
 $link = $_SERVER['PHP_SELF'];
@@ -64,7 +70,7 @@ $page = end($link_array);
                         <span class="icon-bar"></span>
                     </button>
                     <!-- logo -->
-                    <a href="index.php" class="navbar-brand">
+                    <a href="faq.php" class="navbar-brand">
                         <img class="img-responsive" alt="" src="frontend/images/logo.png">
                     </a>
                     <!-- header end -->
@@ -73,9 +79,10 @@ $page = end($link_array);
                 <div class="navbar-collapse collapse">
                     <!-- right bar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><div class="btn-nav"><a href="index.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'index.php'){ echo ' active-menu'; } ?>">FAQ</a></div></li>
+                        <li><div class="btn-nav"><a href="index.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'faq.php'){ echo ' active-menu'; } ?>">FAQ</a></div></li>
                         <li><div class="btn-nav"><a href="product.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'product.php'){ echo ' active-menu'; } ?>">PRODUCTS</a></div></li>
                         <li><div class="btn-nav"><a href="showroom.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'showroom.php'){ echo ' active-menu'; } ?>">SHOWROOMS</a></div></li>
+                        <li><div class="btn-nav"><a href="admin/function/logout.php" class="btn btn-danger btn-small navbar-btn">LOGOUT</a></div></li>
                     </ul>
                 </div>
             </div>

@@ -6,7 +6,8 @@
  * and open the template in the editor.
  */
 if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
-    $division_id        = $_POST['division_id'];
+    $user_type          = $_POST['user_type'];
+//    $division_id        = $_POST['division_id'];
     $first_name         = $_POST['first_name'];
     $last_name          = $_POST['last_name'];
     $email              = $_POST['email'];
@@ -17,9 +18,9 @@ if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
     if (!$isDuplicate) {
         $error = false;
         $_SESSION['error_data'] = [];
-        if (empty($division_id)) {
+        if (empty($user_type)) {
             $error = true;
-            $_SESSION['error_data']['division_id'] = 'Concern division is required!';
+            $_SESSION['error_data']['user_type'] = 'User Type is required!';
         }
         if (empty($first_name)) {
             $error = true;
@@ -35,6 +36,7 @@ if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
         }
         if ($error) {
             $_SESSION['error']              = "Please fill up the required fields";
+            $_SESSION['user_type']          = $user_type;
             $_SESSION['division_id']        = $division_id;
             $_SESSION['first_name']         = $first_name;
             $_SESSION['last_name']          = $last_name;
@@ -42,14 +44,15 @@ if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
             $_SESSION['password']           = $password;
         } else {
             $fields = [
+                'user_type'             => $user_type,
                 'division_id'           => $division_id,
                 'first_name'            => $first_name,
                 'last_name'             => $last_name,
                 'email'                 => $email,
-                'user_type'             => 'gen',
                 'password'              => md5($password)
             ];
             $insert = saveData($table, $fields);
+            unset($_SESSION['user_type']);
             unset($_SESSION['division_id']);
             unset($_SESSION['first_name']);
             unset($_SESSION['last_name']);
@@ -58,6 +61,7 @@ if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
             $_SESSION['success'] = "Data have been successfully Saved.";
         }
     } else {
+        $_SESSION['user_type']          = $user_type;
         $_SESSION['division_id']        = $division_id;
         $_SESSION['first_name']         = $first_name;
         $_SESSION['last_name']          = $last_name;
@@ -69,7 +73,8 @@ if (isset($_POST['userSave']) && !empty($_POST['userSave'])) {
     exit();
 }
 if (isset($_POST['userUpdate']) && !empty($_POST['userUpdate'])) {
-    $user_edit_id        = $_POST['user_edit_id'];
+    $user_edit_id       = $_POST['user_edit_id'];
+    $user_type          = $_POST['user_type'];
     $division_id        = $_POST['division_id'];
     $first_name         = $_POST['first_name'];
     $last_name          = $_POST['last_name'];
@@ -81,6 +86,10 @@ if (isset($_POST['userUpdate']) && !empty($_POST['userUpdate'])) {
     if (!$isDuplicate) {
         $error = false;
         $_SESSION['error_data'] = [];
+        if (empty($user_type)) {
+            $error = true;
+            $_SESSION['error_data']['user_type'] = 'User Type is required!';
+        }
         if (empty($division_id)) {
             $error = true;
             $_SESSION['error_data']['division_id'] = 'Concern division is required!';
@@ -95,19 +104,21 @@ if (isset($_POST['userUpdate']) && !empty($_POST['userUpdate'])) {
         }
         if ($error) {
             $_SESSION['error']              = "Please fill up the required fields";
+            $_SESSION['user_type']          = $user_type;
             $_SESSION['division_id']        = $division_id;
             $_SESSION['first_name']         = $first_name;
             $_SESSION['last_name']          = $last_name;
             $_SESSION['email']              = $email;
         } else {
             $fields = [
+                'user_type'             => $user_type,
                 'division_id'           => $division_id,
                 'first_name'            => $first_name,
                 'last_name'             => $last_name,
                 'email'                 => $email,
                 'user_type'             => 'gen',
             ];
-            $sql            = "UPDATE users set division_id='$division_id',first_name='$first_name',last_name='$last_name',email='$email' where id=$user_edit_id";
+            $sql            = "UPDATE users set user_type='$user_type',division_id='$division_id',first_name='$first_name',last_name='$last_name',email='$email' where id=$user_edit_id";
             $conn->query($sql);
             
             if(isset($password) && !empty($password)){
@@ -116,6 +127,7 @@ if (isset($_POST['userUpdate']) && !empty($_POST['userUpdate'])) {
                 $conn->query($sql);
             }
             
+            unset($_SESSION['user_type']);
             unset($_SESSION['division_id']);
             unset($_SESSION['first_name']);
             unset($_SESSION['last_name']);
@@ -124,6 +136,7 @@ if (isset($_POST['userUpdate']) && !empty($_POST['userUpdate'])) {
             $_SESSION['success'] = "Data have been successfully Updated.";
         }
     } else {
+        $_SESSION['user_type']          = $user_type;
         $_SESSION['division_id']        = $division_id;
         $_SESSION['first_name']         = $first_name;
         $_SESSION['last_name']          = $last_name;

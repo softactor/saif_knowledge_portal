@@ -27,40 +27,77 @@
                     <?php include 'operation_message.php'; ?>
                     <form role="form" method="post" action="">
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="exampleInputQuestion">Concern Division</label>
-                                <select class="form-control" id="division_id" name="division_id">
-                                    <option value="">Select</option>
-                                    <?php
-                                    $table = "division";
-                                    $groupData = getTableDataByTableName($table, 'asc', 'name', 'obj');
-                                    if (isset($groupData) && !empty($groupData)) {
-                                        foreach ($groupData as $gdata) {
-                                            ?>
-                                            <option value="<?php echo $gdata->id; ?>"<?php if(isset($_SESSION['division_id']) && $_SESSION['division_id'] == $gdata->id){ echo 'selected'; } ?>><?php echo $gdata->name; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                </select>
-                                <?php
-                                    if(isset($_SESSION['error_data']['division_id']) && !empty($_SESSION['error_data']['division_id'])){
-                                        echo '<div class="error_message">'.$_SESSION['error_data']['division_id'].'</div>';
-                                        unset($_SESSION['error_data']['division_id']);
-                                    }
-                                ?>
-                            </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputQuestion">Name<span class="required_text"></span></label>
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter Name" value="<?php if(isset($_SESSION['first_name']) && !empty($_SESSION['first_name'])){ echo $_SESSION['first_name']; } ?>">
-                                        <?php
-                                            if(isset($_SESSION['error_data']['first_name']) && !empty($_SESSION['error_data']['first_name'])){
-                                                echo '<div class="error_message">'.$_SESSION['error_data']['first_name'].'</div>';
-                                                unset($_SESSION['error_data']['first_name']);
+                                        <label for="exampleInputQuestion">User Type</label>
+                                        <select class="form-control" id="user_type" name="user_type">
+                                            <option value="">Select</option>
+                                            <?php
+                                            $table = "user_type";
+                                            $groupData = getTableDataByTableName($table, 'asc', 'type_order', 'obj');
+                                            if (isset($groupData) && !empty($groupData)) {
+                                                foreach ($groupData as $gdata) {
+                                                    ?>
+                                                    <option value="<?php echo $gdata->short_name; ?>"<?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == $gdata->short_name) {
+                                                echo 'selected';
+                                            } ?>><?php echo $gdata->name; ?></option>
+                                                    <?php
+                                                }
                                             }
+                                            ?>
+                                        </select>
+                                        <?php
+                                        if (isset($_SESSION['error_data']['user_type']) && !empty($_SESSION['error_data']['user_type'])) {
+                                            echo '<div class="error_message">' . $_SESSION['error_data']['user_type'] . '</div>';
+                                            unset($_SESSION['error_data']['user_type']);
+                                        }
                                         ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputQuestion">Concern Division</label>
+                                        <select class="form-control" id="division_id" name="division_id">
+                                            <option value="">Select</option>
+                                            <?php
+                                            $table = "division";
+                                            $groupData = getTableDataByTableName($table, 'asc', 'name', 'obj');
+                                            if (isset($groupData) && !empty($groupData)) {
+                                                foreach ($groupData as $gdata) {
+                                                    ?>
+                                                    <option value="<?php echo $gdata->id; ?>"<?php if (isset($_SESSION['division_id']) && $_SESSION['division_id'] == $gdata->id) {
+                                                echo 'selected';
+                                            } ?>><?php echo $gdata->name; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                        </select>
+                                        <?php
+                                        if (isset($_SESSION['error_data']['division_id']) && !empty($_SESSION['error_data']['division_id'])) {
+                                            echo '<div class="error_message">' . $_SESSION['error_data']['division_id'] . '</div>';
+                                            unset($_SESSION['error_data']['division_id']);
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputQuestion">Name<span class="required_text"></span></label>
+                                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter Name" value="<?php if (isset($_SESSION['first_name']) && !empty($_SESSION['first_name'])) {
+                                            echo $_SESSION['first_name'];
+                                        } ?>">
+<?php
+if (isset($_SESSION['error_data']['first_name']) && !empty($_SESSION['error_data']['first_name'])) {
+    echo '<div class="error_message">' . $_SESSION['error_data']['first_name'] . '</div>';
+    unset($_SESSION['error_data']['first_name']);
+}
+?>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
