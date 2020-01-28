@@ -82,7 +82,7 @@ $page = end($link_array);
                         <li><div class="btn-nav"><a href="index.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'faq.php'){ echo ' active-menu'; } ?>">FAQ</a></div></li>
                         <li><div class="btn-nav"><a href="product.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'product.php'){ echo ' active-menu'; } ?>">PRODUCTS</a></div></li>
                         <li><div class="btn-nav"><a href="showroom.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'showroom.php'){ echo ' active-menu'; } ?>">SHOWROOMS</a></div></li>
-                        <li><div class="btn-nav"><a href="admin/function/logout.php" class="btn btn-danger btn-small navbar-btn">LOGOUT</a></div></li>
+                        <li><div class="btn-nav"><a href="admin/function/frontend_logout.php" class="btn btn-danger btn-small navbar-btn">LOGOUT</a></div></li>
                     </ul>
                 </div>
             </div>
