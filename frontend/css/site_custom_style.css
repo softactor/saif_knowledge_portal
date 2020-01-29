@@ -51,6 +51,7 @@ and open the template in the editor.
 
 #rich_editor_content_section table{
     background-color: white;
+    width: 100% !important;
 }
 #rich_editor_content_section table tr th{
     font-size: 12px;
@@ -65,7 +66,7 @@ and open the template in the editor.
     border: 1px solid #DDDDDD;
 }
 #rich_editor_content_section table tr th table{
-    width: 100%;
+    width: 100% !important;
 }
 #rich_editor_content_section table tr td table{
     width: 100%;
