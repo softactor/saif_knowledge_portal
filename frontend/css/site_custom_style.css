@@ -27,3 +27,50 @@ and open the template in the editor.
     padding: 5px 5px;
     border: 1px solid greenyellow;
 }
+.rich_editor_image_content_section{
+    float: left;
+    padding: 0 1%;
+    color: black;
+}
+#rich_editor_content_section{
+    width: 60%;
+}
+#rich_editor_image_section{
+    width: 40%;
+}
+#rich_editor_content_section ul{
+    list-style-type: square;
+    list-style-position: outside;
+    list-style-image: none;
+}
+#rich_editor_content_section ul li{
+    padding: 5px 0;
+/*    background-color: #EEEEEE;
+    border: 1px solid #DDDDDD;*/
+}
+
+#rich_editor_content_section table{
+    background-color: white;
+}
+#rich_editor_content_section table tr th{
+    font-size: 12px;
+    text-align: center;
+    background-color: lightgrey;
+    border: 1px solid #DDDDDD;
+    padding: 0 5px;
+}
+#rich_editor_content_section table tr td{
+    font-size: 14px;
+    padding:.5% 1%;
+    border: 1px solid #DDDDDD;
+}
+#rich_editor_content_section table tr th table{
+    width: 100%;
+}
+#rich_editor_content_section table tr td table{
+    width: 100%;
+}
+.front_product_files{
+    float: right;
+    margin: 1% 0;
+}

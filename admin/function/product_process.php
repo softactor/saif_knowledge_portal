@@ -206,10 +206,26 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
             <button type="button" class="close" data-dismiss="modal"><img src="admin/images/icon/close.png" /></button>
             <h4 class="modal-title"><?php echo $product_title; ?></h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body">            
+            <div class="row">
+            <?php if (isset($image_path) && !empty($image_path)) { ?>
+                <div class="col-md-12">
+                    <div class="rich_editor_image_content_section" id="rich_editor_content_section">
+                        <?php echo htmlspecialchars_decode($description); ?>
+                    </div>
+                    <div class="rich_editor_image_content_section" id="rich_editor_image_section">
+                        <img class="img-responsive" src="admin/uploads/<?php echo $image_path; ?>">
+                    </div>
+                </div>
+                <?php }else{ ?>
+                    <div class="col-md-12">
+                        <?php echo htmlspecialchars_decode($description); ?>   
+                    </div>
+                <?php } ?>
+            </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="front_product_files" style="float: right;">
+                    <div class="front_product_files">
                         <?php if (isset($excel_path)) { ?>
                             <div class="product_files">
                                 <a href="admin/uploads/<?php echo $excel_path; ?>" target="_blank"><img src="admin/images/icon/100X100_excel.png"></a>
@@ -225,20 +241,6 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
                     </div>
                     <br />
                 </div>
-            </div>
-            <div class="row">
-            <?php if (isset($image_path) && !empty($image_path)) { ?>
-                <div class="col-md-9">
-                    <?php echo htmlspecialchars_decode($description); ?>
-                </div>
-                <div class="col-md-3">
-                    <img class="img-responsive" src="admin/uploads/<?php echo $image_path; ?>">
-                </div>
-                <?php }else{ ?>
-                    <div class="col-md-12">
-                        <?php echo htmlspecialchars_decode($description); ?>   
-                    </div>
-                <?php } ?>
             </div>
         </div>
 <?php }

@@ -18,5 +18,10 @@
         </div>
     </div>
 </div>
+print '<pre>';
+print_r();
+print '</pre>';
+exit;
+
 
 <?php include 'footer.php'; ?>
