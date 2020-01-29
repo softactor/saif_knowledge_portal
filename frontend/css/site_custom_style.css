@@ -72,6 +72,6 @@ and open the template in the editor.
     width: 100%;
 }
 .front_product_files{
-    float: right;
+    float: left;
     margin: 1% 0;
 }
