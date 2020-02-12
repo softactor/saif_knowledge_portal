@@ -139,5 +139,6 @@
           });
     }
 </script>
+<script src="../get_data_table.js"></script>
 </body>
 </html>

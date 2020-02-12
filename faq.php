@@ -48,7 +48,7 @@
                                     <div id="faq" class="col-md-12">
                                         <div class="panel-group" id="accordion">
                                             <?php
-                                            $table = 'faq';
+                                            $table = 'faq where is_status=1';
                                             $order = 'ASC';
                                             $column = 'question_title';
                                             $dataType = 'obj';

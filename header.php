@@ -50,6 +50,7 @@ $page = end($link_array);
         <link type="text/css" rel="stylesheet" href="frontend/css/bootstrap-dropdownhover.min.css" />
         <!-- JavaScripts -->
         <script src="frontend/js/modernizr.js"></script>
+        <link rel="stylesheet" href="admin/css/sweetalert.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -79,7 +80,7 @@ $page = end($link_array);
                 <div class="navbar-collapse collapse">
                     <!-- right bar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><div class="btn-nav"><a href="index.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'faq.php'){ echo ' active-menu'; } ?>">FAQ</a></div></li>
+                        <li><div class="btn-nav"><a href="faq.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'faq.php'){ echo ' active-menu'; } ?>">FAQ</a></div></li>
                         <li><div class="btn-nav"><a href="product.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'product.php'){ echo ' active-menu'; } ?>">PRODUCTS</a></div></li>
                         <li><div class="btn-nav"><a href="showroom.php" class="btn btn-primary btn-small navbar-btn<?php if($page == 'showroom.php'){ echo ' active-menu'; } ?>">SHOWROOMS</a></div></li>
                         <li><div class="btn-nav"><a href="admin/function/frontend_logout.php" class="btn btn-danger btn-small navbar-btn">LOGOUT</a></div></li>

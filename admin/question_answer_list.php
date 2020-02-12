@@ -26,43 +26,42 @@
                         <a href="question_answer_add.php" class="create_link"><i class="fa fa-plus"></i> Add</a>
                     </div>
                     <div class="box-body">
-                        <?php
-                        $table = ((is_super_admin($_SESSION['logged']['user_type']))? 'faq': "faq where division_id=".$_SESSION['logged']['division_id']);
-                        $order = 'ASC';
-                        $column = 'question_title';
-                        $dataType = 'obj';
-                        $tableData = getTableDataByTableName($table, $order, $column, $dataType);
-                        if (isset($tableData) && !empty($tableData)) {
-                            ?>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Question</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sl = 0;
-                                    foreach ($tableData as $adata) {
-                                        ?>
-                                        <tr id="list_row_id_<?php echo $adata->id; ?>">
-                                            <td><?php echo ++$sl; ?></td>
-                                            <td><?php echo (isset($adata->question_title) && !empty($adata->question_title) ? $adata->question_title : 'No data'); ?></td>
-                                            <td>
-                                                <a href="question_answer_edit.php?faq_id=<?php echo $adata->id; ?>" class="btn btn-small"><i class="fa fa-pencil"></i></a>
-                                                <button type="button" class="btn btn-small" onclick="confirm_delete_operation('<?php echo $adata->id; ?>', 'faq');"><i class="fa fa-close"></i></button>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        <?php } else { ?>
-                            <div class="alert alert-warning">
-                                <strong>Sorry there is no data!</strong>
-                            </div>
-                        <?php } ?>
+                        <table id="faq_list_data" class="table table-striped table-bordered list-table-custom-style" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="form-group">
+                                            <select class="form-control" id="division_id" name="division_id" onchange="get_dropdown_wise_faq_data()">
+                                            <option value="">Select All</option>
+                                                <?php
+                                                $table = 'division';
+                                                $order = 'ASC';
+                                                $column = 'name';
+                                                $dataType = 'obj';
+                                                $divitableData = getTableDataByTableName($table, $order, $column, $dataType);
+                                                if (isset($divitableData) && !empty($divitableData)) {
+                                                    foreach ($divitableData as $dividata) {
+                                                ?>
+                                                        <option value="<?php echo $dividata->id; ?>"><?php echo $dividata->name; ?></option>
+                                                <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                    </th>
+                                    <th>Question</th>
+                                    <th>
+                                        <div class="form-group">
+                                            <select class="form-control" id="is_status" name="is_status" onchange="get_dropdown_wise_faq_data();">
+                                                <option value="">Select</option>
+                                                <option value="0" <?php if(isset($editTableData->is_status) && $editTableData->is_status==0){ echo 'selected'; } ?>>Unapprove</option>
+                                                <option value="1"<?php if(isset($editTableData->is_status) && $editTableData->is_status==1){ echo 'selected'; } ?>>Approve</option>
+                                            </select>
+                                        </div>
+                                    </th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                     <!-- /.box-body -->
                 </div>

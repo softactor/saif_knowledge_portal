@@ -226,13 +226,13 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_product_detail
             <div class="row">
                 <div class="col-md-12">
                     <div class="front_product_files">
-                        <?php if (isset($excel_path)) { ?>
+                        <?php if (isset($excel_path) && !empty($excel_path)) { ?>
                             <div class="product_files">
                                 <a href="admin/uploads/<?php echo $excel_path; ?>" target="_blank"><img src="admin/images/icon/100X100_excel.png"></a>
                             </div>
                         <?php }
                         ?>
-                        <?php if (isset($pdf_path)) { ?>
+                        <?php if (isset($pdf_path) && !empty($pdf_path)) { ?>
                             <div class="product_files">
                                 <a href="admin/uploads/<?php echo $pdf_path; ?>" target="_blank"><img src="admin/images/icon/100X100_pdf.png"></a>
                             </div>
@@ -468,6 +468,128 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProduct
         $sub_array[]    = getNameByIdAndTable($table);;
         $sub_array[]    = $row["product_title"];
         $sub_array[]    = '<button type="button" class="btn btn-small details-btn" onclick="get_product_details(\''.$primary_id.'\',\''.$table_name.'\');">Details</button>';
+        $data[]         = $sub_array;
+    }
+
+    $output = array(
+        "draw"              => intval($_POST["draw"]),
+        "recordsTotal"      =>  getDataRowByTable('product_info'),
+        "recordsFiltered"   => $number_filter_row,
+        "data"              => $data
+       );
+       
+       echo json_encode($output);
+       exit;
+}
+
+if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProducts') {
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+
+    $column = array("p.id", "p.division_id","p.product_title");
+    $query = "SELECT p.id, p.division_id, p.product_title FROM product_info as p ";
+
+    if (isset($_POST["division_id"]) && !empty($_POST["division_id"])) {
+        $query .= " WHERE ";
+        $query .= "p.division_id = " . $_POST["division_id"];
+    }
+
+    if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
+        $query .= ' where p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        $query .= 'OR p.product_title LIKE "%' . $_POST["search"]["value"] . '%"';
+    }
+
+    if (isset($_POST["order"]) && !empty($_POST["order"])) {
+        $query .= ' ORDER BY ' . $column[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
+    } else {
+        $query .= ' ORDER BY p.product_title ASC ';
+    }
+
+    $query1 = '';
+    $limit  =   $_POST["length"];
+    if(isset($limit) && $limit!=-1){
+        $query1 .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+    }
+    //echo $query; exit;
+    $number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
+
+    $result = mysqli_query($conn, $query . $query1);
+
+    $data = array();
+
+    while ($row = mysqli_fetch_array($result)) {
+        $table_name     =   "product_info";
+        $division_id    =   $row["division_id"];
+        $primary_id     =   $row["id"];
+        $table          =   "division where id=$division_id";
+        
+        $sub_array      = array();
+        $sub_array[]    = getNameByIdAndTable($table);;
+        $sub_array[]    = $row["product_title"];
+        $sub_array[]    = '<button type="button" class="btn btn-small details-btn" onclick="get_product_details(\''.$primary_id.'\',\''.$table_name.'\');">Details</button>';
+        $data[]         = $sub_array;
+    }
+
+    $output = array(
+        "draw"              => intval($_POST["draw"]),
+        "recordsTotal"      =>  getDataRowByTable('product_info'),
+        "recordsFiltered"   => $number_filter_row,
+        "data"              => $data
+       );
+       
+       echo json_encode($output);
+       exit;
+}
+
+if (isset($_GET['process_type']) && $_GET['process_type'] == 'getAdminProductsList') {
+    include '../connection/connect.php';
+    include '../helper/utilities.php';
+
+    $column = array("p.id", "p.division_id","p.product_title");
+    $query = "SELECT p.id, p.division_id, p.product_title FROM product_info as p ";
+
+    if (isset($_POST["division_id"]) && !empty($_POST["division_id"])) {
+        $query .= " WHERE ";
+        $query .= "p.division_id = " . $_POST["division_id"];
+    }
+
+    if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
+        $query .= ' where p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        $query .= 'OR p.product_title LIKE "%' . $_POST["search"]["value"] . '%"';
+    }
+
+    if (isset($_POST["order"]) && !empty($_POST["order"])) {
+        $query .= ' ORDER BY ' . $column[$_POST['order']['0']['column']] . ' ' . $_POST['order']['0']['dir'] . ' ';
+    } else {
+        $query .= ' ORDER BY p.product_title ASC ';
+    }
+
+    $query1 = '';
+    $limit  =   $_POST["length"];
+    if(isset($limit) && $limit!=-1){
+        $query1 .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+    }
+    //echo $query; exit;
+    $number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
+
+    $result = mysqli_query($conn, $query . $query1);
+
+    $data = array();
+
+    while ($row = mysqli_fetch_array($result)) {
+        $details_link   =   "";
+        $table_name     =   "product_info";
+        $division_id    =   $row["division_id"];
+        $primary_id     =   $row["id"];
+        $table          =   "division where id=$division_id";
+        
+        $details_link.='<a href="product_edit.php?product_id='.$primary_id.'" class="btn btn-small"><i class="fa fa-pencil"></i></a>';
+        $details_link.='<button type="button" class="btn btn-small" onclick="confirm_delete_operation(\''.$primary_id.'\',\''.$table_name.'\');"><i class="fa fa-close"></i></button>';
+        
+        $sub_array      = array();
+        $sub_array[]    = getNameByIdAndTable($table);;
+        $sub_array[]    = $row["product_title"];
+        $sub_array[]    = $details_link;
         $data[]         = $sub_array;
     }
 

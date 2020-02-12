@@ -78,6 +78,20 @@
                                 ?>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputQuestion">Status<span class="required_text"></span></label>
+                                <select class="form-control" id="is_status" name="is_status">
+                                    <option value="">Select</option>
+                                    <option value="0" <?php if(isset($editTableData->is_status) && $editTableData->is_status==0){ echo 'selected'; } ?>>Unapprove</option>
+                                    <option value="1"<?php if(isset($editTableData->is_status) && $editTableData->is_status==1){ echo 'selected'; } ?>>Approve</option>
+                                </select>
+                                <?php
+                                    if(isset($_SESSION['error_data']['is_status']) && !empty($_SESSION['error_data']['is_status'])){
+                                        echo '<div class="error_message">'.$_SESSION['error_data']['is_status'].'</div>';
+                                        unset($_SESSION['error_data']['is_status']);
+                                    }
+                                ?>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputQuestion">Tag</label>
                                 <input type="text" class="form-control" id="question_tag" name="question_tag" placeholder="Enter Tag with comma separated value" value="<?php if(isset($editTableData->question_tag) && !empty($editTableData->question_tag)){ echo $editTableData->question_tag; } ?>">
                             </div>

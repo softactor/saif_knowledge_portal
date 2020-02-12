@@ -1,3 +1,8 @@
+<div id="reve-chat-widget-header" onclick="openNewQueriesEntryModal();">
+    <div class="pageHolder">
+        <img src="frontend/images/new_query.png" title="Want to add new queries?">
+    </div>
+</div>
 <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
 <footer class="footer-area">
     <!--Footer-->
@@ -19,78 +24,6 @@
 <!------------------------------------Datatables----->
 <script src="frontend/js/jquery.dataTables.min.js"></script>
 <script src="frontend/js/dataTables.bootstrap.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        load_product_data();
-        load_showroom_data();
-    });
-
-    function load_product_data(division_id = "") {
-        var dataTable = $('#product_data').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "order": [],
-            "ajax": {
-                url: "admin/function/product_process.php?process_type=getFrontendProducts",
-                type: "POST",
-                dataType: 'json',
-                data: {
-                    division_id: division_id
-                }
-            },
-            "columnDefs": [{
-                "targets": [0, 1],
-                "orderable": false,
-            }, ],
-            "lengthMenu": [
-                [10, 250, 500, -1],
-                [10, 250, 500, "All"]
-            ]
-        });
-    }
-
-    function get_division_wise_product_data(division_id) {
-        $('#product_data').DataTable().destroy();
-        if(division_id) {
-            load_product_data(division_id);
-        } else {
-            load_product_data();
-        }
-    }
-    function load_showroom_data(division_id = "") {
-        var dataTable = $('#showroom_list').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "order": [],
-            "ajax": {
-                url: "admin/function/showroom_process.php?process_type=getFrontendShowrooms",
-                type: "POST",
-                dataType: 'json',
-                data: {
-                    division_id: division_id
-                }
-            },
-            "columnDefs": [{
-                "targets": [0, 1],
-                "orderable": false,
-            }, ],
-            "lengthMenu": [
-                [10, 250, 500, -1],
-                [10, 250, 500, "All"]
-            ]
-        });
-    }
-
-    function get_division_wise_showroom_data(division_id) {
-        $('#showroom_list').DataTable().destroy();
-        if(division_id) {
-            load_showroom_data(division_id);
-        } else {
-            load_showroom_data();
-        }
-    }
-</script>
 <!-------------------------------------Datatables----->
 <!-- Jquery Smooth Scroll  -->
 <!--<script src="frontend/js/jquery.smoothscroll.js"></script>-->
@@ -109,6 +42,7 @@
 <!--Style Switcher -->
 <script src="frontend/js/bootstrap-dropdownhover.min.js"></script>
 <script src="frontend/js/faq_live_search.js"></script>
+<script src="admin/js/sweetalert.js"></script>
 <script type="text/javascript">
     function get_product_details(id, table) {
         if (id) {
@@ -171,9 +105,14 @@
             });
         }
     }
+    function openNewQueriesEntryModal(){
+        $('#new_quires_entry_modal').modal('show');
+    }
 </script>
+<script src="get_data_table.js"></script>
 </body>
 
 </html>
 <?php include 'frontend/modal/product_details_modal.php'; ?>
 <?php include 'frontend/modal/showroom_details_modal.php'; ?>
+<?php include 'frontend/modal/new_quires_entry_modal.php'; ?>
