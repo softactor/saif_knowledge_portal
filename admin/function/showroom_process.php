@@ -251,14 +251,42 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'get_showroom_detai
         $showroom_address   =    $response->showroom_address;
         $contact_name       =    $response->contact_name;
         $contact_number     =    $response->contact_number;
-//        $designation        =    $response->designation;
+        $designation        =    $response->designation;
+        $email              =    $response->email;
     ?>
-        <div class="modal-header">
+<div class="modal-header" style="background-color: lightgreen">
             <button type="button" class="close" data-dismiss="modal"><img src="admin/images/icon/close.png" /></button>
-            <h4 class="modal-title"><?php echo $showroom_title; ?></h4>
+            <h2 class="modal-title">Showroom Details</h2>
         </div>
         <div class="modal-body">
-            <?php echo $showroom_address; ?>
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Showroom</b> <a class="pull-right"><?php echo $showroom_title; ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Contact Name</b> <a class="pull-right"><?php echo (isset($contact_name) && !empty($contact_name) ? $contact_name: 'No Records'); ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <?php
+                                $designationTable   =   'designations where id='
+                            ?>
+                            <b>Designation</b> <a class="pull-right"><?php echo (isset($designation) && !empty($designation) ? getNameByIdAndTable('designations where id='.$designation): 'No Records'); ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Email</b> <a class="pull-right"><?php echo (isset($email) && !empty($email) ? $email: 'No Records'); ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Contact Number</b> <a class="pull-right"><?php echo (isset($contact_number) && !empty($contact_number) ? $contact_number: 'No Records'); ?></a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Address</b> <a class="pull-right"><?php echo (isset($showroom_address) && !empty($showroom_address) ? $showroom_address: 'No Records'); ?></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
         </div>
     <?php }
 }
