@@ -99,19 +99,28 @@
                                 <div class="col-md-12">
                                     <div class="product_files_section">
                                         <?php if (isset($tableData->image_path) && !empty($tableData->image_path)) { ?>
-                                        <div class="product_files">
-                                            <img src="uploads/<?php echo $tableData->image_path; ?>" width="100">
+                                        <div class="product_files" id="list_row_id_image_path">
+                                            <div class="product_file_delete_section" onclick="delete_product_item('<?php echo $tableData->id ?>', 'image_path')">
+                                                <a class="btn btn-social-icon btn-google"><i class="fa fa-close"></i></a>
+                                            </div>
+                                            <img src="uploads/<?php echo $tableData->image_path; ?>" width="100">                                            
                                         </div>
                                         <?php }
                                         ?>
                                         <?php if (isset($tableData->excel_path) && !empty($tableData->excel_path)) { ?>
-                                        <div class="product_files">
+                                        <div class="product_files" id="list_row_id_excel_path">
+                                            <div class="product_file_delete_section" onclick="delete_product_item('<?php echo $tableData->id ?>', 'excel_path')">
+                                                <a class="btn btn-social-icon btn-google"><i class="fa fa-close"></i></a>
+                                            </div>
                                             <a href="uploads/<?php echo $tableData->excel_path; ?>" target="_blank"><img src="images/icon/100X100_excel.png"></a>
                                         </div>
                                         <?php }
                                         ?>
                                         <?php if (isset($tableData->pdf_path) && !empty($tableData->pdf_path)) { ?>
-                                        <div class="product_files">
+                                        <div class="product_files" id="list_row_id_pdf_path">
+                                            <div class="product_file_delete_section" onclick="delete_product_item('<?php echo $tableData->id ?>', 'pdf_path')">
+                                                <a class="btn btn-social-icon btn-google"><i class="fa fa-close"></i></a>
+                                            </div>
                                             <a href="uploads/<?php echo $tableData->pdf_path; ?>" target="_blank"><img src="images/icon/100X100_pdf.png"></a>
                                         </div>
                                         <?php }

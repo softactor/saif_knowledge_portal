@@ -138,6 +138,42 @@
             
           });
     }
+    function delete_product_item(delete_id, type){        
+        swal({
+            title               : "Are you sure?",
+            type                : "warning",
+            showCancelButton    : true,
+            confirmButtonClass  : "btn-danger",
+            confirmButtonText   : "Yes, delete it!",
+            closeOnConfirm      : false
+          },
+          function(){
+            var delete_row  =   "list_row_id_"+type;  
+            var deleteUrl   =   baseUrl + "admin/function/common_process.php?process_type=productSingleFileDel";  
+            var ajaxParam = {
+                delete_id   : delete_id,
+                fieldName   : type
+            };
+            $.ajax({
+                url     : deleteUrl,
+                type    : 'POST',
+                dataType: 'json',
+                data    : ajaxParam,
+                success: function (response) {
+                    if(response.status  ==  "success"){
+                        $('#'+delete_row).hide('slow');
+                        swal("Deleted!", response.message, "success");
+                    }else{
+                        swal("Fail to delete!", response.message, "error");
+                    }                    
+                    setTimeout(function() {
+                        swal.close();
+                    }, 1000);
+                }
+            }); 
+            
+          });
+    }
 </script>
 <script src="../get_data_table.js"></script>
 </body>

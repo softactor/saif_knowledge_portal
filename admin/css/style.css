@@ -41,3 +41,9 @@ a.create_link{
     padding: 5px 5px;
     border: 1px solid greenyellow;
 }
+
+.product_files .product_file_delete_section{
+   position : relative;
+   left     : 85px;
+   top      : -15px;
+}
