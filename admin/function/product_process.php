@@ -436,7 +436,11 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProduct
     }
 
     if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
-        $query .= ' where p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        if(isset($_POST["division_id"]) && !empty($_POST["division_id"])){
+            $query .= ' AND p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        }else{
+            $query .= ' WHERE p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        }
         $query .= 'OR p.product_title LIKE "%' . $_POST["search"]["value"] . '%"';
     }
 
@@ -451,7 +455,6 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProduct
     if(isset($limit) && $limit!=-1){
         $query1 .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
     }
-    //echo $query; exit;
     $number_filter_row = mysqli_num_rows(mysqli_query($conn, $query));
 
     $result = mysqli_query($conn, $query . $query1);
