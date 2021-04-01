@@ -10,8 +10,11 @@ $data       =   '';
 $status     =   '404';
 $message    =   'Data not found';
 
-if(isset($_POST['accessToken']) && !empty($_POST['accessToken'])){ 
-    $table      =   "faq WHERE division_id IN (4,9)";
+if(isset($_POST['accessToken']) && !empty($_POST['accessToken'])){
+    $division   =   $_POST['maxon'];
+    if($division == 'maxon'){
+        $table      =   "faq WHERE division_id IN (4,9)";
+    }
     $allFaq     =   getTableDataByTableName($table, $order = 'asc', $column='question_title', $dataType = 'OBJ');
     
     if(isset($allFaq) && !empty($allFaq)){
