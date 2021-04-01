@@ -11,6 +11,7 @@ $status     =   '404';
 $message    =   'Data not found';
 
 if(isset($_POST['accessToken']) && !empty($_POST['accessToken'])){
+    
     $division   =   $_POST['division'];
     if($division == 'maxon'){
         $table      =   "faq WHERE division_id IN (4,9)";
@@ -30,10 +31,10 @@ if(isset($_POST['accessToken']) && !empty($_POST['accessToken'])){
     ];   
     
 }else{
-    $feedBack       =   (object)[
+    $feedBack       =   [
         'status'       =>  $status,
         'message'      =>  $message,
         'data'         =>  $data,
     ];
 }
-return $feedBack;
+echo json_encode($feedBack);
