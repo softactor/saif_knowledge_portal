@@ -11,7 +11,7 @@ $status     =   '404';
 $message    =   'Data not found';
 
 if(isset($_POST['accessToken']) && !empty($_POST['accessToken'])){
-    $division   =   $_POST['maxon'];
+    $division   =   $_POST['division'];
     if($division == 'maxon'){
         $table      =   "faq WHERE division_id IN (4,9)";
     }
