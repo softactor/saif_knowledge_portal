@@ -27,15 +27,10 @@ if(isset($_POST['accessToken']) && !empty($_POST['accessToken'])){
     ];   
     
 }else{
-    $feedBack       =   [
+    $feedBack       =   (object)[
         'status'       =>  $status,
         'message'      =>  $message,
         'data'         =>  $data,
     ];
 }
-print '<pre>';
-print_r($feedBack);
-print '</pre>';
-exit;
-
 return $feedBack;
