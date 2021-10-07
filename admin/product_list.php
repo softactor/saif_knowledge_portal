@@ -50,6 +50,7 @@
                                         </div>
                                     </th>
                                     <th>Name</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

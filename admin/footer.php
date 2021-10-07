@@ -42,6 +42,7 @@
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/adminlte.min.js"></script>
 <script src="js/sweetalert.js"></script>
+<script src="js/bootstrap4-toggle.min.js"></script>
 <script type="text/javascript">
     function getDistrictByDivision(division_id){
         if(division_id){
@@ -176,5 +177,8 @@
     }
 </script>
 <script src="../get_data_table.js"></script>
+<script>
+    $(function(){ $('#product_archive_on_off').bootstrapToggle() });
+</script>
 </body>
 </html>

@@ -65,6 +65,7 @@
                                         <div class="radio">
                                             <label class="radio-inline"><input type="radio" name="product_type" value="1" <?php if(isset($tableData->product_type) && $tableData->product_type == 1){ echo 'checked'; } ?>>Existing</label>
                                             <label class="radio-inline"><input type="radio" name="product_type" value="2" <?php if(isset($tableData->product_type) && $tableData->product_type == 2){ echo 'checked'; } ?>>Upcoming</label>
+                                            <label class="radio-inline"><input type="radio" name="product_type" value="3" <?php if(isset($tableData->product_type) && $tableData->product_type == 3){ echo 'checked'; } ?>>Archive</label>
                                         </div>
                                         <?php
                                     if(isset($_SESSION['error_data']['product_type']) && !empty($_SESSION['error_data']['product_type'])){

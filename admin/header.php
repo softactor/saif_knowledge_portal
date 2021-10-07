@@ -45,6 +45,7 @@ include 'function/customer_relation_process.php';
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="vendor/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
         <link rel="stylesheet" href="css/sweetalert.css">
+        
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,6 +57,7 @@ include 'function/customer_relation_process.php';
         <!-- Google Font -->
         <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap4-toggle.css">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">

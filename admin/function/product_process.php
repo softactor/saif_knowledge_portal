@@ -548,8 +548,8 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getAdminProductsLi
     include '../connection/connect.php';
     include '../helper/utilities.php';
 
-    $column = array("p.id", "p.division_id","p.product_title");
-    $query = "SELECT p.id, p.division_id, p.product_title FROM product_info as p ";
+    $column = array("p.id", "p.division_id","p.product_title","p.product_type");
+    $query = "SELECT p.id, p.division_id, p.product_title, p.product_type FROM product_info as p ";
 
     if (isset($_POST["division_id"]) && !empty($_POST["division_id"])) {
         $query .= " WHERE ";
@@ -580,6 +580,17 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getAdminProductsLi
     $data = array();
 
     while ($row = mysqli_fetch_array($result)) {
+
+        if(isset($row['product_type']) && !empty($row['product_type'])){
+            if($row['product_type'] == 1){
+                $productStatus = '<button type="button" class="btn btn-sm btn-success">Existing</div>';
+            }elseif($row['product_type'] == 2){
+                $productStatus = '<button type="button" class="btn btn-sm btn-primary">Upcoming</div>';
+            }elseif($row['product_type'] == 3){
+                $productStatus = '<button type="button" class="btn btn-sm btn-warning">Existing</div>';
+            }
+        }
+
         $details_link   =   "";
         $table_name     =   "product_info";
         $division_id    =   $row["division_id"];
@@ -592,6 +603,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getAdminProductsLi
         $sub_array      = array();
         $sub_array[]    = getNameByIdAndTable($table);;
         $sub_array[]    = $row["product_title"];
+        $sub_array[]    = $productStatus;
         $sub_array[]    = $details_link;
         $data[]         = $sub_array;
     }
