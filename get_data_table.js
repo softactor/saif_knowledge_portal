@@ -10,6 +10,7 @@ function load_product_data(division_id = "") {
         "createdRow": function(row, data, dataIndex) {
             if (data[3] == 1) {
                 $(row).find('td:eq(2) button').addClass('existing_class_btn');
+                $(row).find('td:eq(1)').css('color', 'green');
             } else if (data[3] == 2) {
                 $(row).find('td:eq(2) button').addClass('upcoming_class_btn');
             } else if (data[3] == 3) {
