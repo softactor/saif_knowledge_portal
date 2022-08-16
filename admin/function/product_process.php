@@ -428,7 +428,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProduct
     include '../helper/utilities.php';
 
     $column = array("p.id", "p.division_id","p.product_title");
-    $query = "SELECT p.id, p.division_id, p.product_title FROM product_info as p ";
+    $query = "SELECT p.id, p.division_id, p.product_title, p.product_type FROM product_info as p ";
 
     if (isset($_POST["division_id"]) && !empty($_POST["division_id"])) {
         $query .= " WHERE ";
@@ -462,6 +462,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProduct
     $data = array();
 
     while ($row = mysqli_fetch_array($result)) {
+
         $table_name     =   "product_info";
         $division_id    =   $row["division_id"];
         $primary_id     =   $row["id"];
@@ -471,6 +472,7 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getFrontendProduct
         $sub_array[]    = getNameByIdAndTable($table);;
         $sub_array[]    = $row["product_title"];
         $sub_array[]    = '<button type="button" class="btn btn-small details-btn" onclick="get_product_details(\''.$primary_id.'\',\''.$table_name.'\');">Details</button>';
+        $sub_array[]    = $row['product_type'];
         $data[]         = $sub_array;
     }
 

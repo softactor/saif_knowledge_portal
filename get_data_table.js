@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     load_product_data();
     load_admin_product_data();
     load_showroom_data();
@@ -7,6 +7,15 @@ $(document).ready(function () {
 
 function load_product_data(division_id = "") {
     var dataTable = $('#product_data').DataTable({
+        "createdRow": function(row, data, dataIndex) {
+            if (data[3] == 1) {
+                $(row).addClass('existing_class');
+            } else if (data[3] == 2) {
+                $(row).addClass('upcoming_class');
+            } else if (data[3] == 3) {
+                $(row).addClass('archive_class');
+            }
+        },
         "processing": true,
         "serverSide": true,
         "order": [],
@@ -19,15 +28,16 @@ function load_product_data(division_id = "") {
             }
         },
         "columnDefs": [{
-                "targets": [0, 1],
-                "orderable": false,
-            }, ],
+            "targets": [0, 1],
+            "orderable": false,
+        }, ],
         "lengthMenu": [
             [10, 250, 500, -1],
             [10, 250, 500, "All"]
         ]
     });
 }
+
 function get_division_wise_product_data(division_id) {
     $('#product_data').DataTable().destroy();
     if (division_id) {
@@ -36,6 +46,7 @@ function get_division_wise_product_data(division_id) {
         load_product_data();
     }
 }
+
 function load_showroom_data(division_id = "") {
     var dataTable = $('#showroom_list').DataTable({
         "processing": true,
@@ -50,15 +61,16 @@ function load_showroom_data(division_id = "") {
             }
         },
         "columnDefs": [{
-                "targets": [0, 1],
-                "orderable": false,
-            }, ],
+            "targets": [0, 1],
+            "orderable": false,
+        }, ],
         "lengthMenu": [
             [10, 250, 500, -1],
             [10, 250, 500, "All"]
         ]
     });
 }
+
 function get_division_wise_showroom_data(division_id) {
     $('#showroom_list').DataTable().destroy();
     if (division_id) {
@@ -67,7 +79,8 @@ function get_division_wise_showroom_data(division_id) {
         load_showroom_data();
     }
 }
-function load_faq_data(division_id = "", is_status="") {
+
+function load_faq_data(division_id = "", is_status = "") {
     var dataTable = $('#faq_list_data').DataTable({
         "processing": true,
         "serverSide": true,
@@ -77,20 +90,21 @@ function load_faq_data(division_id = "", is_status="") {
             type: "POST",
             dataType: 'json',
             data: {
-                division_id : division_id,
-                is_status   : is_status
+                division_id: division_id,
+                is_status: is_status
             }
         },
         "columnDefs": [{
-                "targets": [0, 1, 2],
-                "orderable": false,
-            }, ],
+            "targets": [0, 1, 2],
+            "orderable": false,
+        }, ],
         "lengthMenu": [
             [10, 250, 500, -1],
             [10, 250, 500, "All"]
         ]
     });
 }
+
 function get_division_wise_faq_data(division_id) {
     $('#faq_list_data').DataTable().destroy();
     if (division_id) {
@@ -99,10 +113,11 @@ function get_division_wise_faq_data(division_id) {
         load_faq_data();
     }
 }
+
 function get_dropdown_wise_faq_data() {
     $('#faq_list_data').DataTable().destroy();
-    var division_id     =   $("#division_id").val();
-    var is_status       =   $("#is_status").val();
+    var division_id = $("#division_id").val();
+    var is_status = $("#is_status").val();
     load_faq_data(division_id, is_status);
 }
 
@@ -120,9 +135,9 @@ function load_admin_product_data(division_id = "") {
             }
         },
         "columnDefs": [{
-                "targets": [0, 1],
-                "orderable": false,
-            }, ],
+            "targets": [0, 1],
+            "orderable": false,
+        }, ],
         "lengthMenu": [
             [10, 250, 500, -1],
             [10, 250, 500, "All"]
@@ -142,18 +157,18 @@ function get_division_wise_admin_product_data(division_id) {
 function saveNewQueryData() {
     var url = baseUrl + "admin/function/faq_process.php?process_type=save_new_query_data";
     $.ajax({
-        url         : url,
-        type        : 'GET',
-        dataType    : 'json',
-        data        : $("#new_quires_entry_form").serialize(),
-        success: function (response) {
-            if(response.status == "success"){
-                swal("Success",response.message,"success");
-                setTimeout(function(){
-                    location.reload(); 
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        data: $("#new_quires_entry_form").serialize(),
+        success: function(response) {
+            if (response.status == "success") {
+                swal("Success", response.message, "success");
+                setTimeout(function() {
+                    location.reload();
                 }, 2000);
-            }else{
-               swal("Error",response.message,"error"); 
+            } else {
+                swal("Error", response.message, "error");
             }
         }
     });

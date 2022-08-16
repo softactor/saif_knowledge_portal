@@ -3,23 +3,28 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
+
+
 /* 
     Created on : Dec 7, 2019, 12:53:01 PM
     Author     : Tanveer Qureshee
 */
 
-.custom-navbar-style{
+.custom-navbar-style {
     padding: 0 0 0 0 !important;
     border-color: white;
 }
-.btn-nav{
+
+.btn-nav {
     margin-left: 1px;
     margin-right: 1px;
 }
-.active-menu{
+
+.active-menu {
     background-color: blue;
 }
-.product_files{
+
+.product_files {
     width: 115px;
     height: 150px;
     margin: 0px 2px;
@@ -27,58 +32,70 @@ and open the template in the editor.
     padding: 5px 5px;
     border: 1px solid greenyellow;
 }
-.rich_editor_image_content_section{
+
+.rich_editor_image_content_section {
     float: left;
     padding: 0 1%;
     color: black;
 }
-#rich_editor_content_section{
+
+#rich_editor_content_section {
     width: 60%;
 }
-#rich_editor_image_section{
+
+#rich_editor_image_section {
     width: 40%;
 }
-#rich_editor_content_section ul{
+
+#rich_editor_content_section ul {
     list-style-type: square;
     list-style-position: outside;
     list-style-image: none;
 }
-#rich_editor_content_section ul li{
+
+#rich_editor_content_section ul li {
     padding: 5px 0;
-/*    background-color: #EEEEEE;
+    /*    background-color: #EEEEEE;
     border: 1px solid #DDDDDD;*/
 }
 
-#rich_editor_content_section table{
+#rich_editor_content_section table {
     background-color: white;
     width: 100% !important;
 }
-#rich_editor_content_section table tr th{
+
+#rich_editor_content_section table tr th {
     font-size: 12px;
     text-align: center;
     background-color: lightgrey;
     border: 1px solid #DDDDDD;
     padding: 0 5px;
 }
-#rich_editor_content_section table tr td{
+
+#rich_editor_content_section table tr td {
     font-size: 14px;
-    padding:.5% 1%;
+    padding: .5% 1%;
     border: 1px solid #DDDDDD;
 }
-#rich_editor_content_section table tr th table{
+
+#rich_editor_content_section table tr th table {
     width: 100% !important;
 }
-#rich_editor_content_section table tr td table{
+
+#rich_editor_content_section table tr td table {
     width: 100%;
 }
-.front_product_files{
+
+.front_product_files {
     float: left;
     margin: 1% 0;
 }
+
 #reve-chat-widget-header {
-    padding : 1px!important;
-    margin  : 1%!important;
+    padding: 1px!important;
+    margin: 1%!important;
 }
+
 #reve-chat-widget-header {
     width: auto;
     right: 0px;
@@ -88,15 +105,32 @@ and open the template in the editor.
     overflow: hidden;
     cursor: pointer;
 }
+
 .pageHolder img {
     width: 50px;
     height: 50px;
-    -webkit-box-shadow: 0 2px 9px rgba(0,0,0,.15);
-    box-shadow: 0 2px 9px rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 2px 9px rgba(0, 0, 0, .15);
+    box-shadow: 0 2px 9px rgba(0, 0, 0, .15);
     border-radius: 50%;
 }
-div#new_quires_entry_modal div.modal-header{
+
+div#new_quires_entry_modal div.modal-header {
     background-color: #C6AEC7;
     border-bottom: none;
     padding: 5px 5px 5px 15px;
+}
+
+table tr.existing_class {
+    background-color: #50FF50;
+    color: white;
+}
+
+table tr.upcoming_class {
+    background-color: #FFFF46;
+    color: white;
+}
+
+table tr.archive_class {
+    background-color: #FF3C3C;
+    color: white;
 }
