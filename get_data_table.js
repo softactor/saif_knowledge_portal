@@ -14,6 +14,7 @@ function load_product_data(division_id = "") {
                 $(row).find('td:eq(2) button').addClass('upcoming_class_btn');
             } else if (data[3] == 3) {
                 $(row).find('td:eq(2) button').addClass('archive_class_btn');
+                $(row).find('td:eq(1)').css('color', 'red');
             }
         },
         "processing": true,
