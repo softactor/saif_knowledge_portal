@@ -9,11 +9,11 @@ function load_product_data(division_id = "") {
     var dataTable = $('#product_data').DataTable({
         "createdRow": function(row, data, dataIndex) {
             if (data[3] == 1) {
-                $(row).addClass('existing_class');
+                $(row).find('td:eq(2) button').addClass('existing_class_btn');
             } else if (data[3] == 2) {
-                $(row).addClass('upcoming_class');
+                $(row).find('td:eq(2) button').addClass('upcoming_class_btn');
             } else if (data[3] == 3) {
-                $(row).addClass('archive_class');
+                $(row).find('td:eq(2) button').addClass('archive_class_btn');
             }
         },
         "processing": true,

@@ -120,17 +120,17 @@ div#new_quires_entry_modal div.modal-header {
     padding: 5px 5px 5px 15px;
 }
 
-table tr.existing_class {
+button.existing_class_btn {
     background-color: #50FF50;
     color: white;
 }
 
-table tr.upcoming_class {
+button.upcoming_class_btn {
     background-color: #FFFF46;
     color: white;
 }
 
-table tr.archive_class {
+button.archive_class_btn {
     background-color: #FF3C3C;
     color: white;
 }
