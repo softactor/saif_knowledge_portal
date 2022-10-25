@@ -157,32 +157,22 @@ if (isset($_GET['process_type']) && $_GET['process_type'] == 'getAllFAQData') {
     $division_id_where  =   false;
     $is_status_where    =   false;
     $column = array("p.id", "p.division_id","p.question_title","p.is_status");
-    $query = "SELECT p.id, p.division_id, p.question_title, p.is_status FROM faq as p ";
+    $query = "SELECT p.id, p.division_id, p.question_title, p.is_status FROM faq as p WHERE 1 ";
 
     if (isset($_POST["division_id"]) && !empty($_POST["division_id"])) {
-        if(!$is_status_where){            
-            $query .= " WHERE ";            
-        }else{
-            $query .= " AND ";
-        }
-        $query .= "p.division_id = " . $_POST["division_id"];
+        $query .= " AND p.division_id = " . $_POST["division_id"];
         $division_id_where  =   true;
     }
     
     if (isset($_POST["is_status"]) && $_POST["is_status"]!="") {
-        if(!$division_id_where){            
-            $query .= " WHERE ";            
-        }else{
-            $query .= " AND ";
-        }
-        $query .= "p.is_status = " . $_POST["is_status"];
+        $query .= " AND p.is_status = " . $_POST["is_status"];
         $is_status_where  =   true;
     }
 
     if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
-        $query .= ' where p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
+        $query .= ' AND ( p.division_id LIKE "%' . $_POST["search"]["value"] . '%" ';
         $query .= 'OR p.question_title LIKE "%' . $_POST["search"]["value"] . '%"';
-        $query .= 'OR p.is_status LIKE "%' . $_POST["search"]["value"] . '%"';
+        $query .= 'OR p.is_status LIKE "%' . $_POST["search"]["value"] . '%" )';
     }
 
     if (isset($_POST["order"]) && !empty($_POST["order"])) {
